@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "dee3d270-8fc3-4ae5-9592-e99abb7edca2"
+      }
+    },
+    "owner": "tgransden"
   }
 }
