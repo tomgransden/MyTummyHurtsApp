@@ -1,4 +1,4 @@
-import { StyleSheet, Text, SafeAreaView, View } from "react-native";
+import { StyleSheet, Text, SafeAreaView, View, StatusBar } from "react-native";
 
 export default function MenuScreen() {
   const array = [
@@ -14,7 +14,29 @@ export default function MenuScreen() {
     n = array.length;
   return (
     <SafeAreaView style={styles.container}>
-      <Text>My tummy hurts</Text>
+      <View
+        style={{
+          marginTop: StatusBar.currentHeight,
+          backgroundColor: "mediumpurple",
+          borderWidth: 1,
+          borderColor: "mediumpurple",
+          borderRadius: 4,
+          marginHorizontal: 16,
+          minHeight: 56,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text
+          style={{
+            fontFamily: "RubikBubbles-Regular",
+            fontSize: 40,
+            color: "white",
+          }}
+        >
+          My tummy hurts
+        </Text>
+      </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <View style={styles.circle}>
           {Array(n)
@@ -28,7 +50,7 @@ export default function MenuScreen() {
                   height: 100,
                   borderRadius: 50,
                   position: "absolute",
-                  backgroundColor: "green",
+                  backgroundColor: "white",
                   justifyContent: "center",
                   alignItems: "center",
                   transform: [
@@ -49,15 +71,33 @@ export default function MenuScreen() {
           <View style={styles.circle2}></View>
         </View>
       </View>
+      <View
+        style={{
+          alignSelf: "center",
+          backgroundColor: "mediumpurple",
+          borderWidth: 1,
+          borderColor: "mediumpurple",
+          borderRadius: 4,
+          padding: 16,
+          marginBottom: 16,
+        }}
+      >
+        <Text
+          style={{
+            fontFamily: "RubikBubbles-Regular",
+            fontSize: 20,
+            color: "white",
+          }}
+        >
+          Settings
+        </Text>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "orange",
-  },
+  container: { flex: 1, backgroundColor: "#bfa2c8" },
   circle: {
     alignItems: "center",
     justifyContent: "center",
@@ -65,7 +105,7 @@ const styles = StyleSheet.create({
   circle2: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "blue",
+    backgroundColor: "yellow",
     height: 160,
     width: 160,
     borderRadius: 80,
