@@ -1,22 +1,14 @@
 import { StyleSheet, Text, SafeAreaView, View, StatusBar } from "react-native";
 
 export default function MenuScreen() {
-  const array = [
-    "https://randomuser.me/api/portraits/women/1.jpg",
-    "https://randomuser.me/api/portraits/women/2.jpg",
-    "https://randomuser.me/api/portraits/women/3.jpg",
-    "https://randomuser.me/api/portraits/women/1.jpg",
-    "https://randomuser.me/api/portraits/women/2.jpg",
-  ];
   const titles = ["Weight", "Medication", "Mood", "Option 4", "Option 5"];
-  var tot = array.length,
+  var tot = titles.length,
     h = 360 / tot,
-    n = array.length;
+    n = titles.length;
   return (
     <SafeAreaView style={styles.container}>
       <View
         style={{
-          marginTop: StatusBar.currentHeight,
           backgroundColor: "mediumpurple",
           borderWidth: 1,
           borderColor: "mediumpurple",
@@ -55,7 +47,7 @@ export default function MenuScreen() {
                   alignItems: "center",
                   transform: [
                     { rotate: i * h + 90 + "deg" },
-                    { translateX: -150 },
+                    { translateX: -140 },
                   ],
                 }}
               >
@@ -73,12 +65,13 @@ export default function MenuScreen() {
       </View>
       <View
         style={{
+          width: 160,
           alignSelf: "center",
           backgroundColor: "mediumpurple",
           borderWidth: 1,
           borderColor: "mediumpurple",
           borderRadius: 4,
-          padding: 16,
+          padding: 8,
           marginBottom: 16,
         }}
       >
@@ -87,6 +80,53 @@ export default function MenuScreen() {
             fontFamily: "RubikBubbles-Regular",
             fontSize: 20,
             color: "white",
+            textAlign: "center",
+          }}
+        >
+          Summary
+        </Text>
+      </View>
+      <View
+        style={{
+          width: 160,
+          alignSelf: "center",
+          backgroundColor: "mediumpurple",
+          borderWidth: 1,
+          borderColor: "mediumpurple",
+          borderRadius: 4,
+          padding: 8,
+          marginBottom: 16,
+        }}
+      >
+        <Text
+          style={{
+            fontFamily: "RubikBubbles-Regular",
+            fontSize: 20,
+            color: "white",
+            textAlign: "center",
+          }}
+        >
+          My Profile
+        </Text>
+      </View>
+      <View
+        style={{
+          width: 160,
+          alignSelf: "center",
+          backgroundColor: "mediumpurple",
+          borderWidth: 1,
+          borderColor: "mediumpurple",
+          borderRadius: 4,
+          padding: 8,
+          marginBottom: 16,
+        }}
+      >
+        <Text
+          style={{
+            fontFamily: "RubikBubbles-Regular",
+            fontSize: 20,
+            color: "white",
+            textAlign: "center",
           }}
         >
           Settings
@@ -97,7 +137,11 @@ export default function MenuScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#bfa2c8" },
+  container: {
+    flex: 1,
+    backgroundColor: "#bfa2c8",
+    marginTop: StatusBar.currentHeight,
+  },
   circle: {
     alignItems: "center",
     justifyContent: "center",

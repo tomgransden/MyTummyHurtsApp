@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import MenuScreen from "./MenuScreen";
+import MenuScreen from "./src/components/MenuScreen";
 
 const Stack = createNativeStackNavigator();
 
