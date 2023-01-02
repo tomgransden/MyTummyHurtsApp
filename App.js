@@ -3,7 +3,6 @@ import { StyleSheet, Text, SafeAreaView, View } from "react-native";
 import Constants from "expo-constants";
 
 export default function App() {
-  const title = "Title";
   const array = [
     "https://randomuser.me/api/portraits/women/1.jpg",
     "https://randomuser.me/api/portraits/women/2.jpg",
