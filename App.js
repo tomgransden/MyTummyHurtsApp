@@ -1,75 +1,45 @@
+import { NavigationContainer } from "@react-navigation/native";
+import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, SafeAreaView, View } from "react-native";
-import Constants from "expo-constants";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import MenuScreen from "./src/components/MenuScreen";
+import Summary from "./src/components/Summary";
 
-export default function App() {
-  const title = "Title";
-  const array = [
-    "https://randomuser.me/api/portraits/women/1.jpg",
-    "https://randomuser.me/api/portraits/women/2.jpg",
-    "https://randomuser.me/api/portraits/women/3.jpg",
-    "https://randomuser.me/api/portraits/women/1.jpg",
-    "https://randomuser.me/api/portraits/women/2.jpg",
-  ];
-  const titles = ["Weight", "Medication", "Mood", "Option 4", "Option 5"];
-  var tot = array.length,
-    h = 360 / tot,
-    n = array.length;
+const Stack = createNativeStackNavigator();
+
+SplashScreen.preventAutoHideAsync();
+
+function App() {
+  const [fontsLoaded] = useFonts({
+    "RubikBubbles-Regular": require("./assets/RubikBubbles-Regular.ttf"),
+  });
+
+  useEffect(() => {
+    if (fontsLoaded) SplashScreen.hideAsync();
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>My tummy hurts</Text>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <View style={styles.circle}>
-          {Array(n)
-            .fill()
-            .map((_, i) => i)
-            .map((i) => (
-              <View
-                style={{
-                  width: 100,
-                  height: 100,
-                  borderRadius: 50,
-                  position: "absolute",
-                  backgroundColor: "green",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  transform: [
-                    { rotate: i * h + 90 + "deg" },
-                    { translateX: -150 },
-                  ],
-                }}
-              >
-                <Text
-                  style={{
-                    transform: [{ rotate: -(i * h + 90) + "deg" }],
-                  }}
-                >
-                  {titles[i]}
-                </Text>
-              </View>
-            ))}
-          <View style={styles.circle2}></View>
-        </View>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Group>
+          <Stack.Screen name="MainMenu" component={MenuScreen} />
+          <Stack.Screen name="Summary" component={Summary} />
+        </Stack.Group>
+        <Stack.Group screenOptions={{ presentation: "modal" }}></Stack.Group>
+      </Stack.Navigator>
+      <StatusBar backgroundColor="#bfa2c8" barStyle="light-content" />
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "orange",
-  },
-  circle: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  circle2: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "blue",
-    height: 160,
-    width: 160,
-    borderRadius: 80,
-  },
-});
+export default App;
