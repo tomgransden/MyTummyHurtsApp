@@ -19,9 +19,11 @@ const circleMenuOptions = [
 ];
 
 export default function MenuScreen({ navigation }) {
-  var tot = circleMenuOptions.length,
-    h = 360 / tot,
-    n = circleMenuOptions.length;
+  const tot = circleMenuOptions.length;
+  const h = 360 / tot;
+  const n = circleMenuOptions.length;
+
+  console.log(0 * h + 90);
   return (
     <SafeAreaView style={styles.container}>
       <PageHeader title={"My tummy hurts"} />
