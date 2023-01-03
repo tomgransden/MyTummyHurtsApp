@@ -10,27 +10,26 @@ import PageHeader from "./PageHeader";
 
 const circleMenuOptions = [
   { title: "Medication", pageToNavigateTo: "" },
-  // { title: "Food", pageToNavigateTo: "" },
-  // { title: "Bowel movements", pageToNavigateTo: "" },
+  { title: "Food", pageToNavigateTo: "" },
+  { title: "Bowel movements", pageToNavigateTo: "" },
   // { title: "Weight", pageToNavigateTo: "" },
   // { title: "Mood", pageToNavigateTo: "" },
   //  { title: "", pageToNavigateTo: "" },
   //  { title: "", pageToNavigateTo: "" },
 ];
 
-export default function MenuScreen({ navigation }) {
+const MenuScreen = ({ navigation }): JSX.Element => {
   const tot = circleMenuOptions.length;
   const h = 360 / tot;
   const n = circleMenuOptions.length;
 
-  console.log(0 * h + 90);
   return (
     <SafeAreaView style={styles.container}>
       <PageHeader title={"My tummy hurts"} />
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <View style={styles.circle}>
           {Array(n)
-            .fill()
+            .fill(null, 0, tot)
             .map((_, i) => i)
             .map((i) => (
               <TouchableOpacity
@@ -146,7 +145,7 @@ export default function MenuScreen({ navigation }) {
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -167,3 +166,5 @@ const styles = StyleSheet.create({
     borderRadius: 80,
   },
 });
+
+export default MenuScreen;

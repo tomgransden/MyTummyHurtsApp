@@ -35,9 +35,6 @@ function App(): JSX.Element {
           <Stack.Screen name="MainMenu" component={MenuScreen} />
           <Stack.Screen name="Summary" component={Summary} />
         </Stack.Group>
-        <Stack.Group screenOptions={{ presentation: "modal" }}>
-          null
-        </Stack.Group>
       </Stack.Navigator>
       <StatusBar backgroundColor="#bfa2c8" />
     </NavigationContainer>
