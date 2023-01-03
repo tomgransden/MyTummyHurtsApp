@@ -1,9 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
+import { StatusBar } from "expo-status-bar";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import MenuScreen from "./src/components/MenuScreen";
+import Summary from "./src/components/Summary";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,23 +21,20 @@ function App() {
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
-    console.log("no fonts");
     return null;
   }
 
-  console.log("fonts");
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          title: "My tummy hurts",
-          headerTintColor: "black",
-          headerStyle: { backgroundColor: "darkgrey" },
         }}
       >
-        <Stack.Screen name="Menu" component={MenuScreen} />
+        <Stack.Screen name="MainMenu" component={MenuScreen} />
+        <Stack.Screen name="Summary" component={Summary} />
       </Stack.Navigator>
+      <StatusBar backgroundColor="#bfa2c8" barStyle="light-content" />
     </NavigationContainer>
   );
 }

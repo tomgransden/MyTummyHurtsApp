@@ -1,41 +1,37 @@
-import { StyleSheet, Text, SafeAreaView, View, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  View,
+  StatusBar,
+  TouchableOpacity,
+} from "react-native";
+import PageHeader from "./PageHeader";
 
-export default function MenuScreen() {
-  const titles = ["Weight", "Medication", "Mood", "Option 4", "Option 5"];
-  var tot = titles.length,
+const circleMenuOptions = [
+  { title: "Medication", pageToNavigateTo: "" },
+  // { title: "Food", pageToNavigateTo: "" },
+  // { title: "Bowel movements", pageToNavigateTo: "" },
+  // { title: "Weight", pageToNavigateTo: "" },
+  // { title: "Mood", pageToNavigateTo: "" },
+  //  { title: "", pageToNavigateTo: "" },
+  //  { title: "", pageToNavigateTo: "" },
+];
+
+export default function MenuScreen({ navigation }) {
+  var tot = circleMenuOptions.length,
     h = 360 / tot,
-    n = titles.length;
+    n = circleMenuOptions.length;
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          backgroundColor: "mediumpurple",
-          borderWidth: 1,
-          borderColor: "mediumpurple",
-          borderRadius: 4,
-          marginHorizontal: 16,
-          minHeight: 56,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Text
-          style={{
-            fontFamily: "RubikBubbles-Regular",
-            fontSize: 40,
-            color: "white",
-          }}
-        >
-          My tummy hurts
-        </Text>
-      </View>
+      <PageHeader title={"My tummy hurts"} />
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <View style={styles.circle}>
           {Array(n)
             .fill()
             .map((_, i) => i)
             .map((i) => (
-              <View
+              <TouchableOpacity
                 key={i}
                 style={{
                   width: 100,
@@ -54,16 +50,29 @@ export default function MenuScreen() {
                 <Text
                   style={{
                     transform: [{ rotate: -(i * h + 90) + "deg" }],
+                    fontFamily: "RubikBubbles-Regular",
+                    textAlign: "center",
                   }}
                 >
-                  {titles[i]}
+                  {circleMenuOptions?.[i]?.title}
                 </Text>
-              </View>
+              </TouchableOpacity>
             ))}
-          <View style={styles.circle2}></View>
+          <View style={styles.circle2}>
+            <Text
+              style={{
+                fontFamily: "RubikBubbles-Regular",
+                fontSize: 20,
+                color: "black",
+                textAlign: "center",
+              }}
+            >
+              Choose an entry to log
+            </Text>
+          </View>
         </View>
       </View>
-      <View
+      <TouchableOpacity
         style={{
           width: 160,
           alignSelf: "center",
@@ -74,6 +83,7 @@ export default function MenuScreen() {
           padding: 8,
           marginBottom: 16,
         }}
+        onPress={() => navigation.navigate("Summary")}
       >
         <Text
           style={{
@@ -85,7 +95,7 @@ export default function MenuScreen() {
         >
           Summary
         </Text>
-      </View>
+      </TouchableOpacity>
       <View
         style={{
           width: 160,
