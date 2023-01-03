@@ -83,8 +83,9 @@ const renderItem = (item, index) => {
               paddingHorizontal: 12,
             }}
           >
-            {item.metadata.medications.map((medication) => (
+            {item.metadata.medications.map((medication, index) => (
               <View
+                key={`medication-${index}`}
                 style={{
                   borderWidth: 1,
                   borderRadius: 32,

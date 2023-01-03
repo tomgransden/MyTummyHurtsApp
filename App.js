@@ -31,8 +31,11 @@ function App() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="MainMenu" component={MenuScreen} />
-        <Stack.Screen name="Summary" component={Summary} />
+        <Stack.Group>
+          <Stack.Screen name="MainMenu" component={MenuScreen} />
+          <Stack.Screen name="Summary" component={Summary} />
+        </Stack.Group>
+        <Stack.Group screenOptions={{ presentation: "modal" }}></Stack.Group>
       </Stack.Navigator>
       <StatusBar backgroundColor="#bfa2c8" barStyle="light-content" />
     </NavigationContainer>
