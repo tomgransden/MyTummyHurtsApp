@@ -10,12 +10,31 @@ import {
 import PageHeader from "./PageHeader";
 import dayjs from "dayjs";
 
-const types = {
-  0: "Medication",
-  1: "Food",
+enum Type {
+  Medication,
+  Food,
+}
+
+type MedicationDataPoint = DataPointBase & {
+  type: 0;
+  metadata: {
+    medications: Array<string>;
+  };
 };
 
-const exampleData = [
+type FoodDataPoint = DataPointBase & {
+  type: 1;
+  metadata: {
+    image: string;
+    description: string;
+  };
+};
+
+type DataPointBase = {
+  createdDate: Date;
+};
+
+const exampleData: Array<MedicationDataPoint | FoodDataPoint> = [
   {
     createdDate: new Date(2023, 1, 2, 3, 24, 0),
     type: 0,
@@ -35,7 +54,10 @@ const exampleData = [
   },
 ];
 
-const renderItem = (item, index) => {
+const renderItem = (
+  item: MedicationDataPoint | FoodDataPoint,
+  index: number
+) => {
   switch (item.type) {
     case 0:
       return (
@@ -73,7 +95,7 @@ const renderItem = (item, index) => {
                 alignSelf: "flex-start",
               }}
             >
-              <Text style={{ fontSize: 16 }}>{types?.[item?.type]}</Text>
+              <Text style={{ fontSize: 16 }}>{Type[item.type]}</Text>
             </View>
           </View>
           <View
@@ -107,7 +129,6 @@ const renderItem = (item, index) => {
           key={`${index}-${item.type}`}
           style={{
             minHeight: 56,
-            backgroundColor: "red",
             marginHorizontal: 16,
             paddingBottom: 16,
             marginTop: 16,
@@ -139,7 +160,7 @@ const renderItem = (item, index) => {
                 alignSelf: "flex-start",
               }}
             >
-              <Text style={{ fontSize: 16 }}>{types?.[item?.type]}</Text>
+              <Text style={{ fontSize: 16 }}>{Type[item.type]}</Text>
             </View>
           </View>
           <View
@@ -154,7 +175,7 @@ const renderItem = (item, index) => {
               style={{ width: 60, height: 60, resizeMode: "cover" }}
             />
             <Text style={{ marginHorizontal: 16 }}>
-              {item?.metadata?.description}
+              {item.metadata.description}
             </Text>
           </View>
         </View>
@@ -162,16 +183,14 @@ const renderItem = (item, index) => {
   }
 };
 
-export default function Summary() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <PageHeader title={"My tummy hurts"} />
-      <ScrollView contentContainerStyle={{ marginTop: 16 }}>
-        {exampleData.map((item, index) => renderItem(item, index))}
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+const Summary = (): JSX.Element => (
+  <SafeAreaView style={styles.container}>
+    <PageHeader title={"My tummy hurts"} />
+    <ScrollView contentContainerStyle={{ marginTop: 16 }}>
+      {exampleData.map((item, index) => renderItem(item, index))}
+    </ScrollView>
+  </SafeAreaView>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -180,3 +199,5 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight,
   },
 });
+
+export default Summary;
