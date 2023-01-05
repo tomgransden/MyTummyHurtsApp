@@ -4,10 +4,8 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar,
   Image,
 } from "react-native";
-import PageHeader from "./PageHeader";
 import dayjs from "dayjs";
 
 enum Type {
@@ -185,7 +183,6 @@ const renderItem = (
 
 const Summary = (): JSX.Element => (
   <SafeAreaView style={styles.container}>
-    <PageHeader title={"My tummy hurts"} />
     <ScrollView contentContainerStyle={{ marginTop: 16 }}>
       {exampleData.map((item, index) => renderItem(item, index))}
     </ScrollView>
@@ -196,7 +193,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#bfa2c8",
-    marginTop: StatusBar.currentHeight,
   },
 });
 

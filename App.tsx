@@ -6,8 +6,14 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import MenuScreen from "./src/components/MenuScreen";
 import Summary from "./src/components/Summary";
+import PageHeader from "./src/components/PageHeader";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  MainMenu: undefined;
+  Summary: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,7 +34,15 @@ function App(): JSX.Element {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: () => <PageHeader title="My tummy hurts" />,
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#bfa2c8",
+          },
+          headerBackTitleVisible: false,
+          headerTintColor: "white",
+          headerShadowVisible: true,
         }}
       >
         <Stack.Group>
