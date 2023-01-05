@@ -48,5 +48,8 @@ jobs:
       - name: 'Type checking'
         run: 'yarn tsc'
 
+      - name: 'Linting'
+        run: 'yarn lint'
+
       - name: Publish update
         run: eas update --auto
