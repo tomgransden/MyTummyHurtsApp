@@ -1,4 +1,4 @@
-import { View, Text, ViewStyle, TextStyle, StyleSheet } from "react-native";
+import { View, Text, ViewStyle, TextStyle, StyleSheet } from 'react-native';
 
 type PageHeaderProps = {
   title: string;
@@ -17,15 +17,15 @@ type PageHeaderStyle = {
 
 const styles = StyleSheet.create<PageHeaderStyle>({
   container: {
-    backgroundColor: "mediumpurple",
+    backgroundColor: 'mediumpurple',
     borderWidth: 1,
-    borderColor: "mediumpurple",
+    borderColor: 'mediumpurple',
     borderRadius: 16,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 4,
   },
-  title: { fontFamily: "RubikBubbles-Regular", fontSize: 24, color: "white" },
+  title: { fontFamily: 'RubikBubbles-Regular', fontSize: 24, color: 'white' },
 });
 
 export default PageHeader;

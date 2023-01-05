@@ -1,12 +1,5 @@
-import {
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  Image,
-} from "react-native";
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
+import { StyleSheet, SafeAreaView, ScrollView, View, Text, Image } from 'react-native';
 
 enum Type {
   Medication,
@@ -16,7 +9,7 @@ enum Type {
 type MedicationDataPoint = DataPointBase & {
   type: 0;
   metadata: {
-    medications: Array<string>;
+    medications: string[];
   };
 };
 
@@ -32,30 +25,26 @@ type DataPointBase = {
   createdDate: Date;
 };
 
-const exampleData: Array<MedicationDataPoint | FoodDataPoint> = [
+const exampleData: (MedicationDataPoint | FoodDataPoint)[] = [
   {
     createdDate: new Date(2023, 1, 2, 3, 24, 0),
     type: 0,
     metadata: {
-      medications: ["Buscopan 20mg", "Ibuprofen 40mg", "Paracetamol 100mg"],
+      medications: ['Buscopan 20mg', 'Ibuprofen 40mg', 'Paracetamol 100mg'],
     },
   },
   {
     createdDate: new Date(2023, 1, 2, 14, 24, 0),
     type: 1,
     metadata: {
-      image:
-        "https://img.kidspot.com.au/ykOJKEb7/kk/2019/08/greeneggs-and-ham-601642-1.jpg",
+      image: 'https://img.kidspot.com.au/ykOJKEb7/kk/2019/08/greeneggs-and-ham-601642-1.jpg',
       description:
-        "Green eggs and hamasnhasFKSAhab   adsBFGBas asuigF uiasfJBsf gasFBJsa asuIFJAS asuFUasf iuasbwfJF UIafsaf",
+        'Green eggs and hamasnhasFKSAhab   adsBFGBas asuigF uiasfJBsf gasFBJsa asuIFJAS asuFUasf iuasbwfJF UIafsaf',
     },
   },
 ];
 
-const renderItem = (
-  item: MedicationDataPoint | FoodDataPoint,
-  index: number
-) => {
+const renderItem = (item: MedicationDataPoint | FoodDataPoint, index: number) => {
   switch (item.type) {
     case 0:
       return (
@@ -66,43 +55,36 @@ const renderItem = (
             paddingBottom: 16,
             marginHorizontal: 16,
             borderWidth: 1,
-            backgroundColor: "white",
-          }}
-        >
+            backgroundColor: 'white',
+          }}>
           <View
             style={{
-              flexDirection: "row",
+              flexDirection: 'row',
               marginTop: 8,
               paddingHorizontal: 16,
-            }}
-          >
+            }}>
             <View
               style={{
-                backgroundColor: "white",
-                alignSelf: "flex-start",
-              }}
-            >
-              <Text style={{ fontSize: 16 }}>
-                {dayjs(item.createdDate).format("hh:mma")}
-              </Text>
+                backgroundColor: 'white',
+                alignSelf: 'flex-start',
+              }}>
+              <Text style={{ fontSize: 16 }}>{dayjs(item.createdDate).format('hh:mma')}</Text>
             </View>
             <Text> - </Text>
             <View
               style={{
-                backgroundColor: "white",
-                alignSelf: "flex-start",
-              }}
-            >
+                backgroundColor: 'white',
+                alignSelf: 'flex-start',
+              }}>
               <Text style={{ fontSize: 16 }}>{Type[item.type]}</Text>
             </View>
           </View>
           <View
             style={{
-              flexDirection: "row",
-              flexWrap: "wrap",
+              flexDirection: 'row',
+              flexWrap: 'wrap',
               paddingHorizontal: 12,
-            }}
-          >
+            }}>
             {item.metadata.medications.map((medication, index) => (
               <View
                 key={`medication-${index}`}
@@ -113,8 +95,7 @@ const renderItem = (
                   marginTop: 12,
                   minHeight: 24,
                   padding: 8,
-                }}
-              >
+                }}>
                 <Text style={{ fontSize: 12 }}>{medication}</Text>
               </View>
             ))}
@@ -131,50 +112,41 @@ const renderItem = (
             paddingBottom: 16,
             marginTop: 16,
             borderWidth: 1,
-            backgroundColor: "white",
-          }}
-        >
+            backgroundColor: 'white',
+          }}>
           <View
             style={{
-              flexDirection: "row",
+              flexDirection: 'row',
               marginTop: 8,
               paddingHorizontal: 16,
-            }}
-          >
+            }}>
             <View
               style={{
-                backgroundColor: "white",
-                alignSelf: "flex-start",
-              }}
-            >
-              <Text style={{ fontSize: 16 }}>
-                {dayjs(item.createdDate).format("hh:mma")}
-              </Text>
+                backgroundColor: 'white',
+                alignSelf: 'flex-start',
+              }}>
+              <Text style={{ fontSize: 16 }}>{dayjs(item.createdDate).format('hh:mma')}</Text>
             </View>
             <Text> - </Text>
             <View
               style={{
-                backgroundColor: "white",
-                alignSelf: "flex-start",
-              }}
-            >
+                backgroundColor: 'white',
+                alignSelf: 'flex-start',
+              }}>
               <Text style={{ fontSize: 16 }}>{Type[item.type]}</Text>
             </View>
           </View>
           <View
             style={{
               marginHorizontal: 16,
-              flexDirection: "row",
+              flexDirection: 'row',
               marginTop: 16,
-            }}
-          >
+            }}>
             <Image
               source={{ uri: item?.metadata?.image }}
-              style={{ width: 60, height: 60, resizeMode: "cover" }}
+              style={{ width: 60, height: 60, resizeMode: 'cover' }}
             />
-            <Text style={{ marginHorizontal: 16 }}>
-              {item.metadata.description}
-            </Text>
+            <Text style={{ marginHorizontal: 16 }}>{item.metadata.description}</Text>
           </View>
         </View>
       );
@@ -192,7 +164,7 @@ const Summary = (): JSX.Element => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#bfa2c8",
+    backgroundColor: '#bfa2c8',
   },
 });
 

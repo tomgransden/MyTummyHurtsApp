@@ -1,12 +1,13 @@
-import { NavigationContainer } from "@react-navigation/native";
-import React, { useEffect } from "react";
-import { StatusBar } from "expo-status-bar";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-import MenuScreen from "./src/components/MenuScreen";
-import Summary from "./src/components/Summary";
-import PageHeader from "./src/components/PageHeader";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
+import React, { useEffect } from 'react';
+
+import MenuScreen from './src/components/MenuScreen';
+import PageHeader from './src/components/PageHeader';
+import Summary from './src/components/Summary';
 
 export type RootStackParamList = {
   MainMenu: undefined;
@@ -17,9 +18,9 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 SplashScreen.preventAutoHideAsync();
 
-function App(): JSX.Element {
+function App(): JSX.Element | null {
   const [fontsLoaded] = useFonts({
-    "RubikBubbles-Regular": require("./assets/RubikBubbles-Regular.ttf"),
+    'RubikBubbles-Regular': require('./assets/RubikBubbles-Regular.ttf'),
   });
 
   useEffect(() => {
@@ -36,15 +37,14 @@ function App(): JSX.Element {
         screenOptions={{
           headerShown: true,
           headerTitle: () => <PageHeader title="My tummy hurts" />,
-          headerTitleAlign: "center",
+          headerTitleAlign: 'center',
           headerStyle: {
-            backgroundColor: "#bfa2c8",
+            backgroundColor: '#bfa2c8',
           },
           headerBackTitleVisible: false,
-          headerTintColor: "white",
+          headerTintColor: 'white',
           headerShadowVisible: true,
-        }}
-      >
+        }}>
         <Stack.Group>
           <Stack.Screen name="MainMenu" component={MenuScreen} />
           <Stack.Screen name="Summary" component={Summary} />
