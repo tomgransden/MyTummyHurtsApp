@@ -5,7 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 
-import MenuScreen from './src/components/MenuScreen';
+import MenuScreen from './src/components/MenuScreen/MenuScreen';
 import PageHeader from './src/components/PageHeader';
 import Summary from './src/components/Summary';
 
