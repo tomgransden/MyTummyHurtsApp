@@ -1,0 +1,5 @@
+package.json
+eas.json
+tsconfig.json
+app.json
+dist

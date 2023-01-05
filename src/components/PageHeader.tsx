@@ -1,32 +1,31 @@
-import { View, Text } from "react-native";
+import { View, Text, ViewStyle, TextStyle, StyleSheet } from 'react-native';
 
 type PageHeaderProps = {
   title: string;
 };
 
 const PageHeader = ({ title }: PageHeaderProps): JSX.Element => (
-  <View
-    style={{
-      backgroundColor: "mediumpurple",
-      borderWidth: 1,
-      borderColor: "mediumpurple",
-      borderRadius: 16,
-      marginHorizontal: 16,
-      minHeight: 56,
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <Text
-      style={{
-        fontFamily: "RubikBubbles-Regular",
-        fontSize: 40,
-        color: "white",
-      }}
-    >
-      {title}
-    </Text>
+  <View style={styles.container}>
+    <Text style={styles.title}>{title}</Text>
   </View>
 );
+
+type PageHeaderStyle = {
+  container: ViewStyle;
+  title: TextStyle;
+};
+
+const styles = StyleSheet.create<PageHeaderStyle>({
+  container: {
+    backgroundColor: 'mediumpurple',
+    borderWidth: 1,
+    borderColor: 'mediumpurple',
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 4,
+  },
+  title: { fontFamily: 'RubikBubbles-Regular', fontSize: 24, color: 'white' },
+});
 
 export default PageHeader;
