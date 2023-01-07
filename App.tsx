@@ -6,7 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 
 import MenuScreen from './src/components/MenuScreen/MenuScreen';
-import PageHeader from './src/components/PageHeader';
+import PageHeader from './src/components/PageHeader/PageHeader';
 import Summary from './src/components/Summary';
 
 export type RootStackParamList = {
@@ -36,7 +36,7 @@ function App(): JSX.Element | null {
       <Stack.Navigator
         screenOptions={{
           headerShown: true,
-          headerTitle: () => <PageHeader title="My tummy hurts" />,
+          headerTitle: () => <PageHeader />,
           headerTitleAlign: 'center',
           headerStyle: {
             backgroundColor: '#bfa2c8',
