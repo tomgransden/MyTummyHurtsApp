@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+
 import { ButtonStyle } from './Button.types';
 
 const styles = StyleSheet.create<ButtonStyle>({
