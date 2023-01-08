@@ -29,7 +29,7 @@ const OuterCircle = ({ index, degreesPerSegment, onPress }: OuterCircleProps): J
     style={[
       styles.outerCircleContainer,
       {
-        transform: [{ rotate: index * degreesPerSegment + 90 + 'deg' }, { translateX: -140 }],
+        transform: [{ rotate: index * degreesPerSegment + 90 + 'deg' }, { translateX: 140 }],
       },
     ]}
     onPress={onPress}>
