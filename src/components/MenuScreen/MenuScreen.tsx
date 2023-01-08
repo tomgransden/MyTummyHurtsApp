@@ -1,127 +1,78 @@
 import { Text, SafeAreaView, View, TouchableOpacity } from 'react-native';
 
+import Button from '../Button/Button';
 import styles from './MenuScreen.style';
-import { MenuScreenProps } from './MenuScreen.types';
+import { MenuOption, MenuScreenProps } from './MenuScreen.types';
 
-const circleMenuOptions = [
-  { title: 'Medication', pageToNavigateTo: '' },
-  { title: 'Food', pageToNavigateTo: '' },
-  { title: 'Bowel movements', pageToNavigateTo: '' },
-  { title: 'Weight', pageToNavigateTo: '' },
-  { title: 'Mood', pageToNavigateTo: '' },
+const circleMenuOptions: MenuOption[] = [
+  { title: 'Medication', pageToNavigateTo: 'Summary' },
+  { title: 'Food', pageToNavigateTo: 'Summary' },
+  { title: 'Bowel movements', pageToNavigateTo: 'Summary' },
+  { title: 'Weight', pageToNavigateTo: 'Summary' },
+  { title: 'Mood', pageToNavigateTo: 'Summary' },
 ];
+
+const CentreCircle = (): JSX.Element => (
+  <View style={styles.centerCircle}>
+    <Text style={styles.centreCircleText}>Choose an entry to log</Text>
+  </View>
+);
+
+type OuterCircleProps = {
+  index: number;
+  degreesPerSegment: number;
+  onPress: () => void;
+};
+
+const OuterCircle = ({ index, degreesPerSegment, onPress }: OuterCircleProps): JSX.Element => (
+  <TouchableOpacity
+    style={[
+      styles.outerCircleContainer,
+      {
+        transform: [{ rotate: index * degreesPerSegment + 90 + 'deg' }, { translateX: -140 }],
+      },
+    ]}
+    onPress={onPress}>
+    <Text
+      style={[
+        styles.outerCircleText,
+        {
+          transform: [{ rotate: -(index * degreesPerSegment + 90) + 'deg' }],
+        },
+      ]}>
+      {circleMenuOptions?.[index]?.title}
+    </Text>
+  </TouchableOpacity>
+);
 
 const MenuScreen = ({ navigation }: MenuScreenProps): JSX.Element => {
   const tot = circleMenuOptions.length;
-  const h = 360 / tot;
-  const n = circleMenuOptions.length;
+  const degressPerSegment = 360 / tot;
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.circleContainer}>
-        {Array(n)
-          .fill(null, 0, tot)
-          .map((_, i) => i)
-          .map((i) => (
-            <TouchableOpacity
-              key={i}
-              style={{
-                width: 100,
-                height: 100,
-                borderRadius: 50,
-                position: 'absolute',
-                backgroundColor: 'white',
-                justifyContent: 'center',
-                alignItems: 'center',
-                transform: [{ rotate: i * h + 90 + 'deg' }, { translateX: -140 }],
-              }}>
-              <Text
-                style={{
-                  transform: [{ rotate: -(i * h + 90) + 'deg' }],
-                  fontFamily: 'RubikBubbles-Regular',
-                  textAlign: 'center',
-                }}>
-                {circleMenuOptions?.[i]?.title}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        <View style={styles.centerCircle}>
-          <Text
-            style={{
-              fontFamily: 'RubikBubbles-Regular',
-              fontSize: 20,
-              color: 'black',
-              textAlign: 'center',
-            }}>
-            Choose an entry to log
-          </Text>
-        </View>
+        {circleMenuOptions.map((item, index) => (
+          <OuterCircle
+            key={index}
+            index={index}
+            degreesPerSegment={degressPerSegment}
+            onPress={() => {
+              navigation.navigate(item?.pageToNavigateTo);
+            }}
+          />
+        ))}
+        <CentreCircle />
       </View>
       <View>
-        <TouchableOpacity
-          style={{
-            width: 160,
-            alignSelf: 'center',
-            backgroundColor: 'mediumpurple',
-            borderWidth: 1,
-            borderColor: 'mediumpurple',
-            borderRadius: 4,
-            padding: 8,
-            marginBottom: 16,
+        <Button
+          title={'Summary'}
+          onPress={() => {
+            navigation.navigate('Summary');
           }}
-          onPress={() => navigation.navigate('Summary')}>
-          <Text
-            style={{
-              fontFamily: 'RubikBubbles-Regular',
-              fontSize: 20,
-              color: 'white',
-              textAlign: 'center',
-            }}>
-            Summary
-          </Text>
-        </TouchableOpacity>
-        <View
-          style={{
-            width: 160,
-            alignSelf: 'center',
-            backgroundColor: 'mediumpurple',
-            borderWidth: 1,
-            borderColor: 'mediumpurple',
-            borderRadius: 4,
-            padding: 8,
-            marginBottom: 16,
-          }}>
-          <Text
-            style={{
-              fontFamily: 'RubikBubbles-Regular',
-              fontSize: 20,
-              color: 'white',
-              textAlign: 'center',
-            }}>
-            My Profile
-          </Text>
-        </View>
-        <View
-          style={{
-            width: 160,
-            alignSelf: 'center',
-            backgroundColor: 'mediumpurple',
-            borderWidth: 1,
-            borderColor: 'mediumpurple',
-            borderRadius: 4,
-            padding: 8,
-            marginBottom: 16,
-          }}>
-          <Text
-            style={{
-              fontFamily: 'RubikBubbles-Regular',
-              fontSize: 20,
-              color: 'white',
-              textAlign: 'center',
-            }}>
-            Settings
-          </Text>
-        </View>
+        />
+        <Button title={'My profile'} onPress={() => {}} />
+        <Button title={'Settings'} onPress={() => {}} />
       </View>
     </SafeAreaView>
   );

@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { ViewStyle } from 'react-native';
+import { TextStyle, ViewStyle } from 'react-native';
 
 import { RootStackParamList } from '../../../App';
 
@@ -9,4 +9,12 @@ export type MenuScreenStyle = {
   container: ViewStyle;
   circleContainer: ViewStyle;
   centerCircle: ViewStyle;
+  centreCircleText: TextStyle;
+  outerCircleContainer: ViewStyle;
+  outerCircleText: TextStyle;
+};
+
+export type MenuOption = {
+  title: string;
+  pageToNavigateTo: keyof RootStackParamList;
 };
