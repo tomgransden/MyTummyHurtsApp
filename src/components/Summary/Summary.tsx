@@ -2,7 +2,8 @@ import dayjs from 'dayjs';
 import { SafeAreaView, ScrollView, View, Text, Image } from 'react-native';
 
 import styles from './Summary.style';
-import { MedicationDataPoint, FoodDataPoint, RecordType, DataPoint } from './Summary.types';
+import { FoodDataPoint, RecordType, DataPoint } from './Summary.types';
+import MedicationTile from './subcomponents/MedicationTile/MedicationTile';
 
 const exampleData: DataPoint[] = [
   {
@@ -21,63 +22,6 @@ const exampleData: DataPoint[] = [
     },
   },
 ];
-
-const MedicationItem = ({ item }: { item: MedicationDataPoint }) => (
-  <View
-    style={{
-      minHeight: 56,
-      paddingBottom: 16,
-      marginHorizontal: 16,
-      borderWidth: 1,
-      backgroundColor: 'white',
-    }}>
-    <View
-      style={{
-        flexDirection: 'row',
-        marginTop: 8,
-        paddingHorizontal: 16,
-      }}>
-      <View
-        style={{
-          backgroundColor: 'white',
-          alignSelf: 'flex-start',
-        }}>
-        <Text style={{ fontSize: 16, fontFamily: 'Rubik' }}>
-          {dayjs(item.createdDate).format('hh:mma')}
-        </Text>
-      </View>
-      <Text> - </Text>
-      <View
-        style={{
-          backgroundColor: 'white',
-          alignSelf: 'flex-start',
-        }}>
-        <Text style={{ fontSize: 16, fontFamily: 'Rubik' }}>{RecordType[item.type]}</Text>
-      </View>
-    </View>
-    <View
-      style={{
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        paddingHorizontal: 12,
-      }}>
-      {item.metadata.medications.map((medication, index) => (
-        <View
-          key={`medication-${index}`}
-          style={{
-            borderWidth: 1,
-            borderRadius: 32,
-            marginRight: 12,
-            marginTop: 12,
-            minHeight: 24,
-            padding: 8,
-          }}>
-          <Text style={{ fontSize: 12 }}>{medication}</Text>
-        </View>
-      ))}
-    </View>
-  </View>
-);
 
 const FoodItem = ({ item }: { item: FoodDataPoint }) => (
   <View
@@ -133,7 +77,7 @@ const FoodItem = ({ item }: { item: FoodDataPoint }) => (
 const renderItem = (item: DataPoint, index: number) => {
   switch (item.type) {
     case RecordType.Medication:
-      return <MedicationItem item={item} key={index} />;
+      return <MedicationTile item={item} key={index} />;
     case RecordType.Food:
       return <FoodItem item={item} key={index} />;
     default:
