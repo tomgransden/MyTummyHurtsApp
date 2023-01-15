@@ -1,6 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-import { MenuScreenStyle } from './MenuScreen.types';
+type MenuScreenStyle = {
+  container: ViewStyle;
+  circleContainer: ViewStyle;
+  centerCircle: ViewStyle;
+  centreCircleText: TextStyle;
+  outerCircleContainer: ViewStyle;
+  outerCircleText: TextStyle;
+};
 
 const styles = StyleSheet.create<MenuScreenStyle>({
   container: {

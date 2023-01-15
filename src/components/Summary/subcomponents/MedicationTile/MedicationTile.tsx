@@ -1,9 +1,12 @@
 import dayjs from 'dayjs';
 import { View, Text } from 'react-native';
 
-import { RecordType } from '../../Summary.types';
+import { MedicationDataPoint, RecordType } from '../../Summary.types';
 import styles from './MedicationTile.style';
-import { MedicationTileProps } from './MedicationTile.types';
+
+type MedicationTileProps = {
+  item: MedicationDataPoint;
+};
 
 const MedicationTile = ({ item }: MedicationTileProps) => (
   <View style={styles.container}>

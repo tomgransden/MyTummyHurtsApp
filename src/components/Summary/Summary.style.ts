@@ -1,6 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 
-import { SummaryStyle } from './Summary.types';
+type SummaryStyle = {
+  container: ViewStyle;
+  scrollViewContainer: ViewStyle;
+};
 
 const styles = StyleSheet.create<SummaryStyle>({
   container: {
