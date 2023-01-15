@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 
 import MenuScreen from './src/components/MenuScreen/MenuScreen';
 import PageHeader from './src/components/PageHeader/PageHeader';
-import Summary from './src/components/Summary';
+import Summary from './src/components/Summary/Summary';
 
 export type RootStackParamList = {
   MainMenu: undefined;
@@ -21,6 +21,7 @@ SplashScreen.preventAutoHideAsync();
 function App(): JSX.Element | null {
   const [fontsLoaded] = useFonts({
     'RubikBubbles-Regular': require('./assets/RubikBubbles-Regular.ttf'),
+    Rubik: require('./assets/Rubik-VariableFont_wght.ttf'),
   });
 
   useEffect(() => {
