@@ -1,9 +1,12 @@
 import dayjs from 'dayjs';
 import { View, Text, Image } from 'react-native';
 
-import { RecordType } from '../../Summary.types';
+import { FoodDataPoint, RecordType } from '../../Summary.types';
 import styles from './FoodTile.style';
-import { FoodTileProps } from './FoodTile.types';
+
+type FoodTileProps = {
+  item: FoodDataPoint;
+};
 
 const FoodTile = ({ item }: FoodTileProps) => (
   <View style={styles.container}>

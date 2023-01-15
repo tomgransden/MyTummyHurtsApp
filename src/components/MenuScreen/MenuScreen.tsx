@@ -1,8 +1,16 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Text, SafeAreaView, View, TouchableOpacity } from 'react-native';
 
+import { RootStackParamList } from '../../../App';
 import Button from '../Button/Button';
 import styles from './MenuScreen.style';
-import { MenuOption, MenuScreenProps } from './MenuScreen.types';
+
+type MenuScreenProps = NativeStackScreenProps<RootStackParamList, 'MainMenu'>;
+
+type MenuOption = {
+  title: string;
+  pageToNavigateTo: keyof RootStackParamList;
+};
 
 const circleMenuOptions: MenuOption[] = [
   { title: 'Medication', pageToNavigateTo: 'Summary' },

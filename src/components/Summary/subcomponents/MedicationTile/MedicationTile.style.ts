@@ -1,6 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-import { MedicationTileStyle } from './MedicationTile.types';
+type MedicationTileStyle = {
+  container: ViewStyle;
+  titleContainer: ViewStyle;
+  timeContainer: ViewStyle;
+  titleText: TextStyle;
+  medicationsContainer: ViewStyle;
+  medicationContainer: ViewStyle;
+  medicationText: TextStyle;
+};
 
 const styles = StyleSheet.create<MedicationTileStyle>({
   container: {

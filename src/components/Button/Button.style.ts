@@ -1,6 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-import { ButtonStyle } from './Button.types';
+type ButtonStyle = {
+  container: ViewStyle;
+  buttonText: TextStyle;
+};
 
 const styles = StyleSheet.create<ButtonStyle>({
   container: {

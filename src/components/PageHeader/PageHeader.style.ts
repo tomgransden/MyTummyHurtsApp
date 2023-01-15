@@ -1,6 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-import { PageHeaderStyle } from './PageHeader.types';
+type PageHeaderStyle = {
+  container: ViewStyle;
+  title: TextStyle;
+};
 
 const styles = StyleSheet.create<PageHeaderStyle>({
   container: {

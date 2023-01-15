@@ -1,5 +1,3 @@
-import { ViewStyle } from 'react-native';
-
 export enum RecordType {
   Medication,
   Food,
@@ -25,8 +23,3 @@ export type FoodDataPoint = DataPointBase & {
 };
 
 export type DataPoint = MedicationDataPoint | FoodDataPoint;
-
-export type SummaryStyle = {
-  container: ViewStyle;
-  scrollViewContainer: ViewStyle;
-};
