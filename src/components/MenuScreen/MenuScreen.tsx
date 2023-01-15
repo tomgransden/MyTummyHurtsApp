@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Text, SafeAreaView, View, TouchableOpacity } from 'react-native';
-import { RootStackParamList } from '../../../App';
 
+import { RootStackParamList } from '../../../App';
 import Button from '../Button/Button';
 import styles from './MenuScreen.style';
 
