@@ -1,16 +1,14 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Text, SafeAreaView, View, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 
 import { RootStackParamList } from '../../../App';
 import Button from '../Button/Button';
 import styles from './MenuScreen.style';
+import { MenuOption } from './MenuScreen.types';
+import CentreCircle from './subcomponents/CentreCircle/CentreCircle';
+import OuterCircle from './subcomponents/OuterCircle/OuterCircle';
 
 type MenuScreenProps = NativeStackScreenProps<RootStackParamList, 'MainMenu'>;
-
-type MenuOption = {
-  title: string;
-  pageToNavigateTo: keyof RootStackParamList;
-};
 
 const circleMenuOptions: MenuOption[] = [
   { title: 'Medication', pageToNavigateTo: 'Summary' },
@@ -19,39 +17,6 @@ const circleMenuOptions: MenuOption[] = [
   { title: 'Weight', pageToNavigateTo: 'Summary' },
   { title: 'Mood', pageToNavigateTo: 'Summary' },
 ];
-
-const CentreCircle = (): JSX.Element => (
-  <View style={styles.centerCircle}>
-    <Text style={styles.centreCircleText}>Choose an entry to log</Text>
-  </View>
-);
-
-type OuterCircleProps = {
-  index: number;
-  degreesPerSegment: number;
-  onPress: () => void;
-};
-
-const OuterCircle = ({ index, degreesPerSegment, onPress }: OuterCircleProps): JSX.Element => (
-  <TouchableOpacity
-    style={[
-      styles.outerCircleContainer,
-      {
-        transform: [{ rotate: index * degreesPerSegment + 90 + 'deg' }, { translateX: 140 }],
-      },
-    ]}
-    onPress={onPress}>
-    <Text
-      style={[
-        styles.outerCircleText,
-        {
-          transform: [{ rotate: -(index * degreesPerSegment + 90) + 'deg' }],
-        },
-      ]}>
-      {circleMenuOptions?.[index]?.title}
-    </Text>
-  </TouchableOpacity>
-);
 
 const MenuScreen = ({ navigation }: MenuScreenProps): JSX.Element => {
   const tot = circleMenuOptions.length;
@@ -68,6 +33,7 @@ const MenuScreen = ({ navigation }: MenuScreenProps): JSX.Element => {
             onPress={() => {
               navigation.navigate(item?.pageToNavigateTo);
             }}
+            text={circleMenuOptions?.[index]?.title}
           />
         ))}
         <CentreCircle />
