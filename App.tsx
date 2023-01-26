@@ -44,7 +44,7 @@ function App(): JSX.Element | null {
           },
           headerBackTitleVisible: false,
           headerTintColor: 'white',
-          headerShadowVisible: true,
+          headerShadowVisible: false,
         }}>
         <Stack.Group>
           <Stack.Screen name="MainMenu" component={MenuScreen} />
