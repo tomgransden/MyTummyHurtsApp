@@ -1,6 +1,6 @@
 {
   "name": "my-tummy-hurts",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -20,6 +20,7 @@
     "@types/react": "~18.0.27",
     "dayjs": "^1.11.7",
     "expo": "^48.0.0",
+    "expo-dev-client": "~2.1.3",
     "expo-font": "~11.1.1",
     "expo-splash-screen": "~0.18.1",
     "expo-status-bar": "~1.4.4",
@@ -58,7 +59,8 @@
       "!**/node_modules/**",
       "!**/babel.config.js",
       "!**/jest.setup.js",
-      "!**/.eslintrc.js"
+      "!**/.eslintrc.js",
+      "!**/dist/**"
     ]
   }
 }
