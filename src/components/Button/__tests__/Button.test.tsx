@@ -12,7 +12,6 @@ describe('Button', () => {
   it('should call onPress', () => {
     const onPress = jest.fn();
     render(<Button onPress={onPress} title="My mock button" />);
-    screen.debug();
     fireEvent.press(screen.getByText('My mock button'));
     expect(onPress).toBeCalledTimes(1);
   });
