@@ -51,5 +51,13 @@ jobs:
       - name: 'Linting'
         run: 'yarn lint'
 
+      - name: 'Unit testing'
+        run: 'yarn test --coverage'
+
+      - name: 'Create report'
+        uses: Nef10/lcov-reporter-action@v0.3.0
+        with:
+          pr-number: ${{ github.event.number }}
+
       - name: Publish update
         run: eas update --auto

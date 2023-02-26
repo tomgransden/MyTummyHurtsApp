@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> has 1 child 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "white",
+      "borderWidth": 1,
+      "marginHorizontal": 16,
+      "marginTop": 16,
+      "minHeight": 56,
+      "paddingBottom": 16,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "marginTop": 8,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignSelf": "flex-start",
+          "backgroundColor": "white",
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Rubik",
+            "fontSize": 16,
+          }
+        }
+      >
+        12:00am
+      </Text>
+    </View>
+    <Text>
+       - 
+    </Text>
+    <View
+      style={
+        {
+          "alignSelf": "flex-start",
+          "backgroundColor": "white",
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Rubik",
+            "fontSize": 16,
+          }
+        }
+      >
+        Food
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "marginHorizontal": 16,
+        "marginTop": 16,
+      }
+    }
+  >
+    <Image
+      source={
+        {
+          "uri": "string",
+        }
+      }
+      style={
+        {
+          "height": 60,
+          "resizeMode": "cover",
+          "width": 60,
+        }
+      }
+    />
+    <Text
+      style={
+        {
+          "flex": 1,
+          "flexWrap": "wrap",
+          "fontFamily": "Rubik",
+          "marginLeft": 16,
+        }
+      }
+    >
+      Food
+    </Text>
+  </View>
+</View>
+`;

@@ -3,3 +3,4 @@ eas.json
 tsconfig.json
 app.json
 dist
+coverage
