@@ -4,9 +4,9 @@ import { View, Text, Image } from 'react-native';
 import { FoodDataPoint, RecordType } from '../../Summary.types';
 import styles from './FoodTile.style';
 
-type FoodTileProps = {
+interface FoodTileProps {
   item: FoodDataPoint;
-};
+}
 
 const FoodTile = ({ item }: FoodTileProps) => (
   <View style={styles.container}>

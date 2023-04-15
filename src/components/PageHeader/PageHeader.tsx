@@ -2,9 +2,9 @@ import { View, Text } from 'react-native';
 
 import styles from './PageHeader.style';
 
-type PageHeaderProps = {
+interface PageHeaderProps {
   title: string;
-};
+}
 
 const defaultProps = {
   title: 'My tummy hurts',

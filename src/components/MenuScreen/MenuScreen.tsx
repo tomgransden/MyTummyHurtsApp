@@ -11,7 +11,7 @@ import OuterCircle from './subcomponents/OuterCircle/OuterCircle';
 type MenuScreenProps = NativeStackScreenProps<RootStackParamList, 'MainMenu'>;
 
 const circleMenuOptions: MenuOption[] = [
-  { title: 'Medication', pageToNavigateTo: 'Summary' },
+  { title: 'Medication', pageToNavigateTo: 'Medication' },
   { title: 'Food', pageToNavigateTo: 'Summary' },
   { title: 'Bowel movements', pageToNavigateTo: 'Summary' },
   { title: 'Weight', pageToNavigateTo: 'Summary' },

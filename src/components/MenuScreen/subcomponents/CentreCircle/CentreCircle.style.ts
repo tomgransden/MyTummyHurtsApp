@@ -1,9 +1,9 @@
 import { TextStyle, ViewStyle, StyleSheet } from 'react-native';
 
-type CentreCircleStyle = {
+interface CentreCircleStyle {
   centerCircle: ViewStyle;
   centreCircleText: TextStyle;
-};
+}
 
 const styles = StyleSheet.create<CentreCircleStyle>({
   centerCircle: {

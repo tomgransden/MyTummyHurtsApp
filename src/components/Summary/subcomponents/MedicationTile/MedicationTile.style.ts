@@ -1,6 +1,6 @@
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-type MedicationTileStyle = {
+interface MedicationTileStyle {
   container: ViewStyle;
   titleContainer: ViewStyle;
   timeContainer: ViewStyle;
@@ -8,7 +8,7 @@ type MedicationTileStyle = {
   medicationsContainer: ViewStyle;
   medicationContainer: ViewStyle;
   medicationText: TextStyle;
-};
+}
 
 const styles = StyleSheet.create<MedicationTileStyle>({
   container: {
