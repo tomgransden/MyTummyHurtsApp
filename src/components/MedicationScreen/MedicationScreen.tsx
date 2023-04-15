@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+
 import styles from './MedicationScreen.style';
 import Pill from './subcomponents/Pill/Pill';
 
