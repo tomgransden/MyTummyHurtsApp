@@ -4,8 +4,8 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-
 import MedicationScreen from './src/components/MedicationScreen/MedicationScreen';
+
 import MenuScreen from './src/components/MenuScreen/MenuScreen';
 import PageHeader from './src/components/PageHeader/PageHeader';
 import Summary from './src/components/Summary/Summary';
@@ -19,6 +19,8 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 SplashScreen.preventAutoHideAsync();
+
+SystemUI.setBackgroundColorAsync("white");
 
 function App(): JSX.Element | null {
   const [fontsLoaded] = useFonts({
