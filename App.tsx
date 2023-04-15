@@ -20,8 +20,6 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 SplashScreen.preventAutoHideAsync();
 
-SystemUI.setBackgroundColorAsync("white");
-
 function App(): JSX.Element | null {
   const [fontsLoaded] = useFonts({
     'RubikBubbles-Regular': require('./assets/RubikBubbles-Regular.ttf'),
