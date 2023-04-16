@@ -1,13 +1,14 @@
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 import styles from './Pill.style';
 
 interface PillProps {
   name: string;
+  onPress: () => void;
 }
 
-const Pill = ({ name }: PillProps) => (
-  <View style={styles.container}>
+const Pill = ({ name, onPress }: PillProps) => (
+  <TouchableOpacity style={styles.container} onPress={onPress}>
     <View style={styles.leftSide} />
 
     <View style={styles.textContainer}>
@@ -15,7 +16,7 @@ const Pill = ({ name }: PillProps) => (
     </View>
 
     <View style={styles.rightSide} />
-  </View>
+  </TouchableOpacity>
 );
 
 export default Pill;
