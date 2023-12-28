@@ -19,7 +19,6 @@
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/native-stack": "^6.9.7",
     "@types/react": "~18.2.14",
-    "@types/react-native": "~0.70.6",
     "dayjs": "^1.11.7",
     "expo": "^49.0.21",
     "expo-dev-client": "~2.4.12",
@@ -68,6 +67,8 @@
       "!**/.eslintrc.js",
       "!**/dist/**"
     ],
-    "setupFilesAfterEnv" : ["./jestSetup.ts"]
+    "setupFilesAfterEnv": [
+      "./jestSetup.ts"
+    ]
   }
 }
