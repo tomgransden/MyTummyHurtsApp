@@ -3,3 +3,6 @@ eas.json
 tsconfig.json
 app.json
 dist
+
+ios
+android

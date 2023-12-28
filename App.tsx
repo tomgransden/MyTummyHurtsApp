@@ -4,12 +4,12 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-import MedicationScreen from './src/components/MedicationScreen/MedicationScreen';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import MedicationScreen from './src/components/MedicationScreen/MedicationScreen';
 import MenuScreen from './src/components/MenuScreen/MenuScreen';
 import PageHeader from './src/components/PageHeader/PageHeader';
 import Summary from './src/components/Summary/Summary';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export type RootStackParamList = {
   MainMenu: undefined;

@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import { View, Text, Image } from 'react-native';
 
-import { FoodDataPoint, RecordType } from '../../Summary.types';
 import styles from './FoodTile.style';
+import { FoodDataPoint, RecordType } from '../../Summary.types';
 
 interface FoodTileProps {
   item: FoodDataPoint;
