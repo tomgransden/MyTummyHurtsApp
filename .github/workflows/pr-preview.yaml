@@ -51,12 +51,12 @@ jobs:
       - name: 'Linting'
         run: 'yarn lint'
 
-      - uses: actions/checkout@v1
-            - uses: jwalton/gh-find-current-pr@v1
-                id: findPr
-            - uses: ArtiomTr/jest-coverage-report-action@v2
-                with:
-                   prnumber: ${{ steps.findPr.outputs.number }}
+      - uses: jwalton/gh-find-current-pr@v1
+         id: findPr
+      
+         - uses: ArtiomTr/jest-coverage-report-action@v2
+          with:
+            prnumber: ${{ steps.findPr.outputs.number }}
 
       - name: Publish update
         run: eas update --auto
