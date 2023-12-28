@@ -51,8 +51,7 @@ jobs:
       - name: 'Linting'
         run: 'yarn lint'
 
-      - name: 'Unit testing'
-        run: 'yarn test'
+      - uses: ArtiomTr/jest-coverage-report-action@v2
 
       - name: Publish update
         run: eas update --auto
