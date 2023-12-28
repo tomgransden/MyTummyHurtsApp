@@ -53,7 +53,7 @@ jobs:
 
       - uses: jwalton/gh-find-current-pr@v1
           id: findPr
-      
+
       - uses: ArtiomTr/jest-coverage-report-action@v2
           with:
             prnumber: ${{ steps.findPr.outputs.number }}
