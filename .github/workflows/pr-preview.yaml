@@ -31,6 +31,9 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: Install dependencies
+        run: yarn install --immutable
+
       - name: 'Type checking'
         run: 'yarn tsc'
 
