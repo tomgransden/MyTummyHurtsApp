@@ -22,7 +22,7 @@ jobs:
           node-version: 18.x
           cache: yarn
       - name: Setup Expo
-        uses: expo/expo-github-action@v7
+        uses: expo/expo-github-action@v8
         with:
           expo-version: latest
           eas-version: latest
@@ -47,5 +47,6 @@ jobs:
       - uses: ArtiomTr/jest-coverage-report-action@v2
         with:
           prnumber: ${{ steps.findPr.outputs.number }}
+          test-script: yarn test
       - name: Publish update
         run: eas update --auto

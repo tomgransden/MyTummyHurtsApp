@@ -68,10 +68,7 @@ const MedicationScreen = ({ navigation }: MedicationScreenProps) => {
   return (
     <View style={styles.container}>
       {!medication.length ? (
-        <Text
-          style={{ fontFamily: 'Rubik', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>
-          No medications available
-        </Text>
+        <Text style={styles.noMedications}>No medications available</Text>
       ) : null}
       <View style={styles.pillList}>
         {medication.map((element) => (
@@ -87,20 +84,12 @@ const MedicationScreen = ({ navigation }: MedicationScreenProps) => {
         keyboardBehavior="interactive"
         keyboardBlurBehavior="restore"
         onChange={handleSheetChanges}>
-        <View style={{ marginHorizontal: 16 }}>
-          <Text
-            style={{
-              fontSize: 24,
-              fontFamily: 'Rubik',
-              fontWeight: 'bold',
-              color: 'mediumpurple',
-            }}>
-            What is the name and dosage of your new medication?
-          </Text>
+        <View style={styles.sheetContainer}>
+          <Text style={styles.sheetText}>What is the name and dosage of your new medication?</Text>
           <BottomSheetTextInput
             ref={inputRef}
             placeholder={'Enter name/dosage here...'}
-            style={{ fontSize: 20, fontFamily: 'Rubik', marginTop: 12 }}
+            style={styles.sheetInput}
             onEndEditing={async (e) => {
               if (e.nativeEvent.text.length) {
                 const newMeds = [...medication, e.nativeEvent.text];
