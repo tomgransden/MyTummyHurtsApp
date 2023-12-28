@@ -1,6 +1,6 @@
 import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-type FoodTileStyle = {
+interface FoodTileStyle {
   container: ViewStyle;
   titleContainer: ViewStyle;
   timeContainer: ViewStyle;
@@ -8,7 +8,7 @@ type FoodTileStyle = {
   contentContainer: ViewStyle;
   image: ImageStyle;
   description: TextStyle;
-};
+}
 
 const styles = StyleSheet.create<FoodTileStyle>({
   container: {

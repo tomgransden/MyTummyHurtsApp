@@ -1,9 +1,9 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 
-type MenuScreenStyle = {
+interface MenuScreenStyle {
   container: ViewStyle;
   circleContainer: ViewStyle;
-};
+}
 
 const styles = StyleSheet.create<MenuScreenStyle>({
   container: {

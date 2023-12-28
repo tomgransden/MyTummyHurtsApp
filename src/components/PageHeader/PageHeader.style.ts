@@ -1,9 +1,9 @@
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-type PageHeaderStyle = {
+interface PageHeaderStyle {
   container: ViewStyle;
   title: TextStyle;
-};
+}
 
 const styles = StyleSheet.create<PageHeaderStyle>({
   container: {

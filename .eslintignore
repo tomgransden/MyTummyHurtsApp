@@ -4,3 +4,6 @@ tsconfig.json
 app.json
 dist/
 coverage/
+
+ios
+android

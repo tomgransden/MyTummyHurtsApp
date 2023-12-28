@@ -4,7 +4,9 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import MedicationScreen from './src/components/MedicationScreen/MedicationScreen';
 import MenuScreen from './src/components/MenuScreen/MenuScreen';
 import PageHeader from './src/components/PageHeader/PageHeader';
 import Summary from './src/components/Summary/Summary';
@@ -12,6 +14,7 @@ import Summary from './src/components/Summary/Summary';
 export type RootStackParamList = {
   MainMenu: undefined;
   Summary: undefined;
+  Medication: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -33,26 +36,29 @@ function App(): JSX.Element | null {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: true,
-          headerTitle: () => <PageHeader />,
-          headerTitleAlign: 'center',
-          headerStyle: {
-            backgroundColor: '#bfa2c8',
-          },
-          headerBackTitleVisible: false,
-          headerTintColor: 'white',
-          headerShadowVisible: false,
-        }}>
-        <Stack.Group>
-          <Stack.Screen name="MainMenu" component={MenuScreen} />
-          <Stack.Screen name="Summary" component={Summary} />
-        </Stack.Group>
-      </Stack.Navigator>
-      <StatusBar backgroundColor="#bfa2c8" />
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: true,
+            headerTitle: () => <PageHeader />,
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#bfa2c8',
+            },
+            headerBackTitleVisible: false,
+            headerTintColor: 'white',
+            headerShadowVisible: false,
+          }}>
+          <Stack.Group>
+            <Stack.Screen name="MainMenu" component={MenuScreen} />
+            <Stack.Screen name="Summary" component={Summary} />
+            <Stack.Screen name="Medication" component={MedicationScreen} />
+          </Stack.Group>
+        </Stack.Navigator>
+        <StatusBar backgroundColor="#bfa2c8" />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 

@@ -1,16 +1,16 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 
-interface SummaryStyle {
+interface MedicationScreenStyle {
   container: ViewStyle;
-  scrollViewContainer: ViewStyle;
+  pillList: ViewStyle;
 }
 
-const styles = StyleSheet.create<SummaryStyle>({
+const styles = StyleSheet.create<MedicationScreenStyle>({
   container: {
     flex: 1,
     backgroundColor: '#bfa2c8',
   },
-  scrollViewContainer: { marginTop: 16 },
+  pillList: { flexDirection: 'row', flexWrap: 'wrap' },
 });
 
 export default styles;
