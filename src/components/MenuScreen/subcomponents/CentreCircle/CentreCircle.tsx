@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 import styles from './CentreCircle.style';
 
 const CentreCircle = () => (
-  <View style={styles.centerCircle}>
+  <Animated.View entering={FadeIn} style={styles.centerCircle}>
     <Text style={styles.centreCircleText}>Choose an entry to log</Text>
-  </View>
+  </Animated.View>
 );
 
 export default CentreCircle;
