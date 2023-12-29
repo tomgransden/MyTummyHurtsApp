@@ -1,8 +1,9 @@
 {
   "expo": {
+    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
     "name": "my-tummy-hurts",
     "slug": "my-tummy-hurts",
-    "version": "0.0.8",
+    "version": "0.0.10",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -26,7 +27,8 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.tgransdenapps.mytummyhurts",
-      "versionCode": 8
+      "versionCode": 10,
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
