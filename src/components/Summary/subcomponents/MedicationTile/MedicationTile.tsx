@@ -2,13 +2,10 @@ import dayjs from 'dayjs';
 import { View, Text } from 'react-native';
 
 import styles from './MedicationTile.style';
-import { MedicationDataPoint, RecordType } from '../../Summary.types';
+import { IMedicationTileProps } from './MedicationTile.type';
+import { IRecordType } from '../../Summary.types';
 
-interface MedicationTileProps {
-  item: MedicationDataPoint;
-}
-
-const MedicationTile = ({ item }: MedicationTileProps) => (
+const MedicationTile = ({ item }: IMedicationTileProps) => (
   <View style={styles.container}>
     <View style={styles.titleContainer}>
       <View style={styles.timeContainer}>
@@ -16,7 +13,7 @@ const MedicationTile = ({ item }: MedicationTileProps) => (
       </View>
       <Text> - </Text>
       <View style={styles.timeContainer}>
-        <Text style={styles.titleText}>{RecordType[item.type]}</Text>
+        <Text style={styles.titleText}>{IRecordType[item.type]}</Text>
       </View>
     </View>
     <View style={styles.medicationsContainer}>

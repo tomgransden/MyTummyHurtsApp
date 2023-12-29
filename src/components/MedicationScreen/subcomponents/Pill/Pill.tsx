@@ -1,13 +1,9 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 
 import styles from './Pill.style';
+import { IPillProps } from './Pill.type';
 
-interface PillProps {
-  name: string;
-  onPress: () => void;
-}
-
-const Pill = ({ name, onPress }: PillProps) => (
+const Pill = ({ name, onPress }: IPillProps) => (
   <TouchableOpacity style={styles.container} onPress={onPress}>
     <View style={styles.leftSide} />
 

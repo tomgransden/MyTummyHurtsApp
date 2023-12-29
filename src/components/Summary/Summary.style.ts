@@ -1,11 +1,6 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface SummaryStyle {
-  container: ViewStyle;
-  scrollViewContainer: ViewStyle;
-}
-
-const styles = StyleSheet.create<SummaryStyle>({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#bfa2c8',

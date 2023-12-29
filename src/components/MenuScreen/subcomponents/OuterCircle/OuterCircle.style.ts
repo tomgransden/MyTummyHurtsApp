@@ -1,11 +1,6 @@
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface OuterCircleStyle {
-  outerCircleContainer: ViewStyle;
-  outerCircleText: TextStyle;
-}
-
-const styles = StyleSheet.create<OuterCircleStyle>({
+const styles = StyleSheet.create({
   outerCircleContainer: {
     width: 100,
     height: 100,

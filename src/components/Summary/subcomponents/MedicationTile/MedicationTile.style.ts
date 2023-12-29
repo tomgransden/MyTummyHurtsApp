@@ -1,16 +1,6 @@
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface MedicationTileStyle {
-  container: ViewStyle;
-  titleContainer: ViewStyle;
-  timeContainer: ViewStyle;
-  titleText: TextStyle;
-  medicationsContainer: ViewStyle;
-  medicationContainer: ViewStyle;
-  medicationText: TextStyle;
-}
-
-const styles = StyleSheet.create<MedicationTileStyle>({
+const styles = StyleSheet.create({
   container: {
     minHeight: 56,
     paddingBottom: 16,

@@ -1,11 +1,6 @@
-import { TextStyle, ViewStyle, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface CentreCircleStyle {
-  centerCircle: ViewStyle;
-  centreCircleText: TextStyle;
-}
-
-const styles = StyleSheet.create<CentreCircleStyle>({
+const styles = StyleSheet.create({
   centerCircle: {
     alignItems: 'center',
     justifyContent: 'center',
