@@ -1,14 +1,6 @@
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface PillStyle {
-  container: ViewStyle;
-  leftSide: ViewStyle;
-  textContainer: ViewStyle;
-  text: TextStyle;
-  rightSide: ViewStyle;
-}
-
-const styles = StyleSheet.create<PillStyle>({
+const styles = StyleSheet.create({
   container: {
     height: 70,
     width: 180,
@@ -23,8 +15,8 @@ const styles = StyleSheet.create<PillStyle>({
     backgroundColor: 'lightgray',
     width: '50%',
     height: 68,
-    borderBottomLeftRadius: 35,
-    borderTopLeftRadius: 35,
+    borderBottomLeftRadius: 34,
+    borderTopLeftRadius: 34,
     zIndex: 0,
     borderRightWidth: 0,
   },

@@ -1,16 +1,13 @@
 import { View, Text } from 'react-native';
 
 import styles from './PageHeader.style';
-
-interface PageHeaderProps {
-  title: string;
-}
+import { IPageHeaderProps } from './PageHeader.type';
 
 const defaultProps = {
   title: 'My tummy hurts',
 };
 
-const PageHeader = ({ title }: PageHeaderProps & typeof defaultProps): JSX.Element => (
+const PageHeader = ({ title }: IPageHeaderProps & typeof defaultProps) => (
   <View style={styles.container}>
     <Text style={styles.title}>{title}</Text>
   </View>

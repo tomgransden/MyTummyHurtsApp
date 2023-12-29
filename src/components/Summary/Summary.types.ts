@@ -1,25 +1,25 @@
-export enum RecordType {
+export enum IRecordType {
   Medication,
   Food,
 }
 
-type DataPointBase = {
+type IDataPointBase = {
   createdDate: Date;
 };
 
-export type MedicationDataPoint = DataPointBase & {
-  type: RecordType.Medication;
+export type IMedicationDataPoint = IDataPointBase & {
+  type: IRecordType.Medication;
   metadata: {
     medications: string[];
   };
 };
 
-export type FoodDataPoint = DataPointBase & {
-  type: RecordType.Food;
+export type IFoodDataPoint = IDataPointBase & {
+  type: IRecordType.Food;
   metadata: {
     image: string;
     description: string;
   };
 };
 
-export type DataPoint = MedicationDataPoint | FoodDataPoint;
+export type IDataPoint = IMedicationDataPoint | IFoodDataPoint;

@@ -1,17 +1,13 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { SafeAreaView, View } from 'react-native';
 
 import styles from './MenuScreen.style';
-import { MenuOption } from './MenuScreen.types';
+import { IMenuScreenProps, IMenuOption } from './MenuScreen.type';
 import CentreCircle from './subcomponents/CentreCircle/CentreCircle';
 import OuterCircle from './subcomponents/OuterCircle/OuterCircle';
-import { RootStackParamList } from '../../../App';
 import Button from '../Button/Button';
 
-type MenuScreenProps = NativeStackScreenProps<RootStackParamList, 'MainMenu'>;
-
-const circleMenuOptions: MenuOption[] = [
+const circleMenuOptions: IMenuOption[] = [
   { title: 'Medication', pageToNavigateTo: 'Medication' },
   { title: 'Food', pageToNavigateTo: 'Summary' },
   { title: 'Bowel movements', pageToNavigateTo: 'Summary' },
@@ -19,7 +15,7 @@ const circleMenuOptions: MenuOption[] = [
   { title: 'Mood', pageToNavigateTo: 'Summary' },
 ];
 
-const MenuScreen = ({ navigation }: MenuScreenProps): JSX.Element => {
+const MenuScreen = ({ navigation }: IMenuScreenProps) => {
   const tot = circleMenuOptions.length;
   const degressPerSegment = 360 / tot;
 

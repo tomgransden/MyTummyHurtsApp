@@ -1,11 +1,6 @@
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface PageHeaderStyle {
-  container: ViewStyle;
-  title: TextStyle;
-}
-
-const styles = StyleSheet.create<PageHeaderStyle>({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: 'mediumpurple',
     borderWidth: 1,

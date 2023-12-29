@@ -1,20 +1,9 @@
 import { TouchableOpacity, Text } from 'react-native';
 
 import styles from './OuterCircle.style';
+import { IOuterCircleProps } from './OuterCircle.type';
 
-interface OuterCircleProps {
-  index: number;
-  degreesPerSegment: number;
-  onPress: () => void;
-  text: string;
-}
-
-const OuterCircle = ({
-  index,
-  degreesPerSegment,
-  onPress,
-  text,
-}: OuterCircleProps): JSX.Element => (
+const OuterCircle = ({ index, degreesPerSegment, onPress, text }: IOuterCircleProps) => (
   <TouchableOpacity
     style={[
       styles.outerCircleContainer,

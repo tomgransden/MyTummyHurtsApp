@@ -1,11 +1,6 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface MedicationScreenStyle {
-  container: ViewStyle;
-  pillList: ViewStyle;
-}
-
-const styles = StyleSheet.create<MedicationScreenStyle>({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#bfa2c8',

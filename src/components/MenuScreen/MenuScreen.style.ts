@@ -1,11 +1,6 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface MenuScreenStyle {
-  container: ViewStyle;
-  circleContainer: ViewStyle;
-}
-
-const styles = StyleSheet.create<MenuScreenStyle>({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#bfa2c8',

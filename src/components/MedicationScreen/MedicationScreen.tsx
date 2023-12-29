@@ -1,18 +1,15 @@
 import { AntDesign } from '@expo/vector-icons';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState, useRef, useMemo, useCallback, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import styles from './MedicationScreen.style';
+import { IMedicationScreenProps } from './MedicationScreen.type';
 import Pill from './subcomponents/Pill/Pill';
-import { RootStackParamList } from '../../../App';
 
-type MedicationScreenProps = NativeStackScreenProps<RootStackParamList, 'Medication'>;
-
-const MedicationScreen = ({ navigation }: MedicationScreenProps) => {
+const MedicationScreen = ({ navigation }: IMedicationScreenProps) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const inputRef = useRef<TextInput>(null);
 

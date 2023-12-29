@@ -1,11 +1,6 @@
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface ButtonStyle {
-  container: ViewStyle;
-  buttonText: TextStyle;
-}
-
-const styles = StyleSheet.create<ButtonStyle>({
+const styles = StyleSheet.create({
   container: {
     width: 160,
     alignSelf: 'center',

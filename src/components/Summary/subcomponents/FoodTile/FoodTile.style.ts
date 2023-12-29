@@ -1,16 +1,6 @@
-import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-interface FoodTileStyle {
-  container: ViewStyle;
-  titleContainer: ViewStyle;
-  timeContainer: ViewStyle;
-  titleText: TextStyle;
-  contentContainer: ViewStyle;
-  image: ImageStyle;
-  description: TextStyle;
-}
-
-const styles = StyleSheet.create<FoodTileStyle>({
+const styles = StyleSheet.create({
   container: {
     minHeight: 56,
     marginHorizontal: 16,
