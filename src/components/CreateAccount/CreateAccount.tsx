@@ -1,5 +1,5 @@
 import auth from '@react-native-firebase/auth';
-import { Button, View } from 'react-native';
+import { Button, TextInput, View } from 'react-native';
 
 const CreateAccount = () => {
   const createAccount = async () => {
@@ -11,6 +11,8 @@ const CreateAccount = () => {
 
   return (
     <View>
+      <TextInput placeholder="Email address" />
+      <TextInput placeholder="Password" textContentType="password" secureTextEntry />
       <Button onPress={createAccount} title="Create account" />
     </View>
   );

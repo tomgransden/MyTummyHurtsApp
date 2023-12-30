@@ -11,8 +11,10 @@ const SignedOut = () => {
         Welcome to My Tummy Hurts
       </Text>
 
-      <Button onPress={() => null} title="Login" />
-      <Button onPress={() => navigation.navigate('CreateAccount')} title="Create an account" />
+      <View style={{ position: 'absolute', bottom: 40, left: 0, right: 0 }}>
+        <Button onPress={() => navigation.navigate('Login')} title="Login" />
+        <Button onPress={() => navigation.navigate('CreateAccount')} title="Create an account" />
+      </View>
     </View>
   );
 };

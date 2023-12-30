@@ -1,3 +1,4 @@
+import auth from '@react-native-firebase/auth';
 import React from 'react';
 import { SafeAreaView, View } from 'react-native';
 
@@ -44,6 +45,12 @@ const MenuScreen = ({ navigation }: IMenuScreenProps) => {
         />
         <Button title={'My profile'} onPress={() => {}} />
         <Button title={'Settings'} onPress={() => {}} />
+        <Button
+          title={'Logout'}
+          onPress={() => {
+            auth().signOut();
+          }}
+        />
       </View>
     </SafeAreaView>
   );
