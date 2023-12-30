@@ -22,6 +22,7 @@ export type RootStackParamList = {
   SignedOut: undefined;
   CreateAccount: undefined;
   Login: undefined;
+  Food: undefined;
 };
 
 declare global {
@@ -50,7 +51,6 @@ function App() {
 
   // Handle user state changes
   function onAuthStateChanged(user) {
-    console.log('auth state changed' + JSON.stringify(user));
     setUser(user);
     if (initializing) setInitializing(false);
   }

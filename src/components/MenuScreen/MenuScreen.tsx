@@ -9,11 +9,11 @@ import OuterCircle from './subcomponents/OuterCircle/OuterCircle';
 import Button from '../Button/Button';
 
 const circleMenuOptions: IMenuOption[] = [
-  { title: 'Medication', pageToNavigateTo: 'Medication' },
+  //{ title: 'Medication', pageToNavigateTo: 'Medication' },
   { title: 'Food', pageToNavigateTo: 'Summary' },
-  { title: 'Bowel movements', pageToNavigateTo: 'Summary' },
-  { title: 'Weight', pageToNavigateTo: 'Summary' },
-  { title: 'Mood', pageToNavigateTo: 'Summary' },
+  //{ title: 'Bowel movements', pageToNavigateTo: 'Summary' },
+  //{ title: 'Weight', pageToNavigateTo: 'Summary' },
+  //{ title: 'Mood', pageToNavigateTo: 'Summary' },
 ];
 
 const MenuScreen = ({ navigation }: IMenuScreenProps) => {

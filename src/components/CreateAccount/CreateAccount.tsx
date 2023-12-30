@@ -1,12 +1,22 @@
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import { Button, TextInput, View } from 'react-native';
 
 const CreateAccount = () => {
   const createAccount = async () => {
-    auth().createUserWithEmailAndPassword(
+    const authResult = await auth().createUserWithEmailAndPassword(
       `testuser${Math.floor(Math.random() * 100000)}@maildrop.cc`,
       'Password123'
     );
+
+    await firestore().collection('users').doc(authResult.user.uid).set({
+      medicationsTaken: [],
+      medications: [],
+      bowelMovements: [],
+      foods: [],
+      weights: [],
+      moods: [],
+    });
   };
 
   return (
