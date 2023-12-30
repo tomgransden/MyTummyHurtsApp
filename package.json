@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.json",
     "lint-and-fix": "eslint . --ext .ts,.tsx,.js,.jsx,.json --fix",
     "prettier-format": "prettier --config .prettierrc '**/*.{json,js,jsx,ts,tsx,css,scss,md}' --write",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4",
