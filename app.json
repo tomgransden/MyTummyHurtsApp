@@ -1,6 +1,10 @@
 {
   "expo": {
-    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth", "@react-native-firebase/firestore"],
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/firestore"
+    ],
     "name": "my-tummy-hurts",
     "slug": "my-tummy-hurts",
     "version": "0.0.11",
