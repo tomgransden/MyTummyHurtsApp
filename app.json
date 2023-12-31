@@ -1,9 +1,9 @@
 {
   "expo": {
     "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
-    "name": "my-tummy-hurts",
+    "name": "My Tummy Hurts",
     "slug": "my-tummy-hurts",
-    "version": "0.0.10",
+    "version": "0.0.12",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -23,11 +23,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/ic_launcher_foreground.png",
+        "backgroundImage": "./assets/ic_launcher_background.png",
+        "monochromeImage": "./assets/ic_launcher_monochrome.png"
       },
       "package": "com.tgransdenapps.mytummyhurts",
-      "versionCode": 10,
+      "versionCode": 12,
       "googleServicesFile": "./google-services.json"
     },
     "web": {
