@@ -1,13 +1,17 @@
 {
   "expo": {
-    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth", [
-      "expo-build-properties",
-      {
-        "ios": {
-          "useFrameworks": "static"
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
         }
-      }
-    ]],
+      ]
+    ],
     "name": "My Tummy Hurts",
     "slug": "my-tummy-hurts",
     "version": "0.0.14",
