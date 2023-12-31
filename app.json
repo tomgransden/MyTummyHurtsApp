@@ -14,7 +14,7 @@
     ],
     "name": "My Tummy Hurts",
     "slug": "my-tummy-hurts",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -32,7 +32,8 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.tgransdenapps.mytummyhurts",
       "googleServicesFile": "./GoogleService-Info.plist",
-      "buildNumber": "14"
+      "buildNumber": "15",
+      "icon": "./assets/ios-icon.png"
     },
     "android": {
       "adaptiveIcon": {
@@ -41,7 +42,7 @@
         "monochromeImage": "./assets/ic_launcher_monochrome.png"
       },
       "package": "com.tgransdenapps.mytummyhurts",
-      "versionCode": 14,
+      "versionCode": 15,
       "googleServicesFile": "./google-services.json"
     },
     "web": {
