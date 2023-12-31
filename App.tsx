@@ -8,9 +8,11 @@ import React, { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import CreateAccount from './src/components/CreateAccount/CreateAccount';
+import Food from './src/components/Food/Food';
 import Login from './src/components/Login/Login';
 import MedicationScreen from './src/components/MedicationScreen/MedicationScreen';
 import MenuScreen from './src/components/MenuScreen/MenuScreen';
+import Mood from './src/components/Mood/Mood';
 import PageHeader from './src/components/PageHeader/PageHeader';
 import SignedOut from './src/components/SignedOut/SignedOut';
 import Summary from './src/components/Summary/Summary';
@@ -23,6 +25,7 @@ export type RootStackParamList = {
   CreateAccount: undefined;
   Login: undefined;
   Food: undefined;
+  Mood: undefined;
 };
 
 declare global {
@@ -84,6 +87,8 @@ function App() {
               <Stack.Screen name="MainMenu" component={MenuScreen} />
               <Stack.Screen name="Summary" component={Summary} />
               <Stack.Screen name="Medication" component={MedicationScreen} />
+              <Stack.Screen name="Food" component={Food} />
+              <Stack.Screen name="Mood" component={Mood} />
             </Stack.Group>
           ) : (
             <Stack.Group>

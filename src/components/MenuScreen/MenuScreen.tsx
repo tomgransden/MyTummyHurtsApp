@@ -10,10 +10,10 @@ import Button from '../Button/Button';
 
 const circleMenuOptions: IMenuOption[] = [
   //{ title: 'Medication', pageToNavigateTo: 'Medication' },
-  { title: 'Food', pageToNavigateTo: 'Summary' },
+  { title: 'Food', pageToNavigateTo: 'Food' },
   //{ title: 'Bowel movements', pageToNavigateTo: 'Summary' },
   //{ title: 'Weight', pageToNavigateTo: 'Summary' },
-  //{ title: 'Mood', pageToNavigateTo: 'Summary' },
+  { title: 'Mood', pageToNavigateTo: 'Mood' },
 ];
 
 const MenuScreen = ({ navigation }: IMenuScreenProps) => {
