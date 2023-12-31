@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>317744715542-pu6gj0r5uq7l75g0adin86m5fsp2slvu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.317744715542-pu6gj0r5uq7l75g0adin86m5fsp2slvu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCj_ZRCG0cpWyfSaOtgD5fmB7GyF5bY0RM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>317744715542</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tgransdenapps.mytummyhurts</string>
+	<key>PROJECT_ID</key>
+	<string>my-tummy-hurts-api</string>
+	<key>STORAGE_BUCKET</key>
+	<string>my-tummy-hurts-api.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:317744715542:ios:71ebccd11ba2e2ddbfa237</string>
+	<key>DATABASE_URL</key>
+	<string>https://my-tummy-hurts-api-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>

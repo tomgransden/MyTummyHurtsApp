@@ -1,9 +1,16 @@
 {
   "expo": {
-    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
+    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth", [
+      "expo-build-properties",
+      {
+        "ios": {
+          "useFrameworks": "static"
+        }
+      }
+    ]],
     "name": "My Tummy Hurts",
     "slug": "my-tummy-hurts",
-    "version": "0.0.12",
+    "version": "0.0.14",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,8 +25,10 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.tgransdenapps.mytummyhurts"
+      "supportsTablet": false,
+      "bundleIdentifier": "com.tgransdenapps.mytummyhurts",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "buildNumber": "14"
     },
     "android": {
       "adaptiveIcon": {
@@ -28,7 +37,7 @@
         "monochromeImage": "./assets/ic_launcher_monochrome.png"
       },
       "package": "com.tgransdenapps.mytummyhurts",
-      "versionCode": 12,
+      "versionCode": 14,
       "googleServicesFile": "./google-services.json"
     },
     "web": {

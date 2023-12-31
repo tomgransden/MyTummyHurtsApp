@@ -7,7 +7,7 @@ import { IRecordType } from '../Summary/Summary.types';
 
 const Food = () => {
   const [foodDescription, setFoodDescription] = useState('');
-  const [foodPhoto, setFoodPhoto] = useState('http://placekitten.com/500/500');
+  const [foodPhoto] = useState('http://placekitten.com/500/500');
 
   const submitFood = async () => {
     const { uid } = auth().currentUser ?? {};

@@ -1,6 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import dayjs from 'dayjs';
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
 
 import styles from './MoodTile.style';
 import { IMoodDataPoint, IRecordType } from '../../Summary.types';

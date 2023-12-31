@@ -78,9 +78,9 @@ function App() {
             headerStyle: {
               backgroundColor: '#bfa2c8',
             },
-            headerBackTitleVisible: false,
             headerTintColor: 'white',
             headerShadowVisible: false,
+            headerBackTitleVisible: false,
           }}>
           {user ? (
             <Stack.Group>
