@@ -43,9 +43,9 @@ const Summary = () => {
         data: [0, 4, 0, 0, 0, 0, 9, 10],
         color: () => `mediumpurple`, // optional
         strokeWidth: 2, // optional
-      }
+      },
     ],
-    labels: []
+    labels: [],
   };
 
   const chartConfig: AbstractChartConfig = {
@@ -70,7 +70,7 @@ const Summary = () => {
         withHorizontalLabels={false}
         withInnerLines
         withShadow={false}
-        style={{marginLeft: -30, marginTop: 12}}
+        style={{ marginLeft: -30, marginTop: 12 }}
         bezier
         fromZero
         hidePointsAtIndex={[3]}

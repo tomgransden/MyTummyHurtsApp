@@ -25,7 +25,6 @@ const Mood = () => {
 
     const record = await document.get();
 
-
     await document.update({
       moods: [
         ...record.get<keyof { foods: []; medications: []; moods: [] }>('moods'),
@@ -38,21 +37,23 @@ const Mood = () => {
           type: IRecordType.Mood,
         },
       ],
-    })
+    });
   };
 
   return (
     <View>
-        <Text style={{fontFamily: 'Rubik', fontSize: 24, fontWeight: 'bold', textAlign: 'center'}}>How are you feeling right now?</Text>
-        <View style={{marginTop: 32, flexDirection: 'row', justifyContent:'space-evenly'}}>
-      {moodIcons.map((item) => (
-        <MaterialCommunityIcons
-          key={item.mood}
-          size={60}
-          name={item.moodIcon}
-          onPress={() => submitMood(item)}
-        />
-      ))}
+      <Text style={{ fontFamily: 'Rubik', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>
+        How are you feeling right now?
+      </Text>
+      <View style={{ marginTop: 32, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+        {moodIcons.map((item) => (
+          <MaterialCommunityIcons
+            key={item.mood}
+            size={60}
+            name={item.moodIcon}
+            onPress={() => submitMood(item)}
+          />
+        ))}
       </View>
     </View>
   );

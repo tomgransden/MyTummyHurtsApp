@@ -29,7 +29,7 @@ export type IMoodDataPoint = IDataPointBase & {
   type: IRecordType.Mood;
   metadata: {
     mood: string;
-    moodIcon: keyof typeof MaterialCommunityIcons['glyphMap']
+    moodIcon: keyof (typeof MaterialCommunityIcons)['glyphMap'];
   };
 };
 
