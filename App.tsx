@@ -7,15 +7,15 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import CreateAccount from './src/components/CreateAccount/CreateAccount';
-import Food from './src/components/Food/Food';
-import Login from './src/components/Login/Login';
-import MedicationScreen from './src/components/MedicationScreen/MedicationScreen';
-import MenuScreen from './src/components/MenuScreen/MenuScreen';
-import Mood from './src/components/Mood/Mood';
 import PageHeader from './src/components/PageHeader/PageHeader';
-import SignedOut from './src/components/SignedOut/SignedOut';
-import Summary from './src/components/Summary/Summary';
+import CreateAccount from './src/screens/CreateAccount/CreateAccount';
+import Food from './src/screens/Food/Food';
+import Login from './src/screens/Login/Login';
+import MedicationScreen from './src/screens/MedicationScreen/MedicationScreen';
+import MenuScreen from './src/screens/MenuScreen/MenuScreen';
+import Mood from './src/screens/Mood/Mood';
+import SignedOut from './src/screens/SignedOut/SignedOut';
+import Summary from './src/screens/Summary/Summary';
 
 export type RootStackParamList = {
   MainMenu: undefined;

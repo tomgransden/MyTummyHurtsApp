@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { Text, View } from 'react-native';
 
-import Button from '../Button/Button';
+import Button from '../../components/Button/Button';
 
 const SignedOut = () => {
   const navigation = useNavigation();

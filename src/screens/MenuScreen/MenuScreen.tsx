@@ -6,7 +6,7 @@ import styles from './MenuScreen.style';
 import { IMenuScreenProps, IMenuOption } from './MenuScreen.type';
 import CentreCircle from './subcomponents/CentreCircle/CentreCircle';
 import OuterCircle from './subcomponents/OuterCircle/OuterCircle';
-import Button from '../Button/Button';
+import Button from '../../components/Button/Button';
 
 const circleMenuOptions: IMenuOption[] = [
   //{ title: 'Medication', pageToNavigateTo: 'Medication' },
