@@ -1,3 +1,4 @@
+import auth from '@react-native-firebase/auth';
 import React from 'react';
 import { SafeAreaView, View } from 'react-native';
 
@@ -8,11 +9,11 @@ import OuterCircle from './subcomponents/OuterCircle/OuterCircle';
 import Button from '../Button/Button';
 
 const circleMenuOptions: IMenuOption[] = [
-  { title: 'Medication', pageToNavigateTo: 'Medication' },
-  { title: 'Food', pageToNavigateTo: 'Summary' },
-  { title: 'Bowel movements', pageToNavigateTo: 'Summary' },
-  { title: 'Weight', pageToNavigateTo: 'Summary' },
-  { title: 'Mood', pageToNavigateTo: 'Summary' },
+  //{ title: 'Medication', pageToNavigateTo: 'Medication' },
+  { title: 'Food', pageToNavigateTo: 'Food' },
+  //{ title: 'Bowel movements', pageToNavigateTo: 'Summary' },
+  //{ title: 'Weight', pageToNavigateTo: 'Summary' },
+  { title: 'Mood', pageToNavigateTo: 'Mood' },
 ];
 
 const MenuScreen = ({ navigation }: IMenuScreenProps) => {
@@ -44,6 +45,12 @@ const MenuScreen = ({ navigation }: IMenuScreenProps) => {
         />
         <Button title={'My profile'} onPress={() => {}} />
         <Button title={'Settings'} onPress={() => {}} />
+        <Button
+          title={'Logout'}
+          onPress={() => {
+            auth().signOut();
+          }}
+        />
       </View>
     </SafeAreaView>
   );

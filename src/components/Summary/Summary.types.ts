@@ -1,6 +1,9 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 export enum IRecordType {
   Medication,
   Food,
+  Mood,
 }
 
 type IDataPointBase = {
@@ -22,4 +25,12 @@ export type IFoodDataPoint = IDataPointBase & {
   };
 };
 
-export type IDataPoint = IMedicationDataPoint | IFoodDataPoint;
+export type IMoodDataPoint = IDataPointBase & {
+  type: IRecordType.Mood;
+  metadata: {
+    mood: string;
+    moodIcon: keyof (typeof MaterialCommunityIcons)['glyphMap'];
+  };
+};
+
+export type IDataPoint = IMedicationDataPoint | IFoodDataPoint | IMoodDataPoint;
