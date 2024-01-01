@@ -4,7 +4,7 @@ import styles from './PageHeader.style';
 import { IPageHeaderProps } from './PageHeader.type';
 
 const defaultProps = {
-  title: 'My tummy hurts',
+  title: 'My tummy urts',
 };
 
 const PageHeader = ({ title }: IPageHeaderProps & typeof defaultProps) => (
