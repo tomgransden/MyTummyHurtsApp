@@ -8,6 +8,7 @@ import { IRecordType, IDataPoint } from './Summary.types';
 import FoodTile from './subcomponents/FoodTile/FoodTile';
 import MedicationTile from './subcomponents/MedicationTile/MedicationTile';
 import MoodTile from './subcomponents/MoodTile/MoodTile';
+import PainTile from './subcomponents/PainTile/PainTile';
 
 // Data for react-native-chart-kit
 const chartConfig = {
@@ -40,6 +41,8 @@ const renderItem = (item: IDataPoint, index: number) => {
       return <FoodTile item={item} key={index} />;
     case IRecordType.Mood:
       return <MoodTile item={item} key={index} />;
+    case IRecordType.Pain:
+      return <PainTile item={item} key={index} />;
     default:
       return null;
   }

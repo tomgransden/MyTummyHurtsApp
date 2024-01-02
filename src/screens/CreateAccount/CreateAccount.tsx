@@ -9,14 +9,7 @@ const CreateAccount = () => {
       'Password123'
     );
 
-    await firestore().collection('users').doc(authResult.user.uid).set({
-      medicationsTaken: [],
-      medications: [],
-      bowelMovements: [],
-      foods: [],
-      weights: [],
-      moods: [],
-    });
+    await firestore().collection('users').doc(authResult.user.uid).set({});
   };
 
   return (
