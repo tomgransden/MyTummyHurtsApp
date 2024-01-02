@@ -1,9 +1,11 @@
-name: update
-on: push
+name: PR checks
+on:
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
-  update:
-    name: EAS Update
+  pr-checks:
+    name: PR checks
     runs-on: ubuntu-latest
     steps:
       - name: Check for EXPO_TOKEN
@@ -39,6 +41,3 @@ jobs:
 
       - name: 'Linting'
         run: 'yarn lint'
-
-      - name: Publish update
-        run: eas update --auto

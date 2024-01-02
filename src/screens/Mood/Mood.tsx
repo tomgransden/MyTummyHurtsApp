@@ -25,19 +25,22 @@ const Mood = () => {
 
     const record = await document.get();
 
-    await document.update({
-      moods: [
-        ...record.get<keyof { foods: []; medications: []; moods: [] }>('moods'),
-        {
-          createdDate: new Date().toISOString(),
-          metadata: {
-            mood: mood.mood,
-            moodIcon: mood.moodIcon,
+    await document.set(
+      {
+        moods: [
+          ...(record.get<keyof { moods: [] }>('moods') ?? []),
+          {
+            createdDate: new Date().toISOString(),
+            metadata: {
+              mood: mood.mood,
+              moodIcon: mood.moodIcon,
+            },
+            type: IRecordType.Mood,
           },
-          type: IRecordType.Mood,
-        },
-      ],
-    });
+        ],
+      },
+      { merge: true }
+    );
   };
 
   return (

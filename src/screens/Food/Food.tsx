@@ -16,19 +16,22 @@ const Food = () => {
 
     const record = await user.get();
 
-    await user.update({
-      foods: [
-        ...record.get<keyof { foods: []; medications: [] }>('foods'),
-        {
-          type: IRecordType.Food,
-          createdDate: new Date().toISOString(),
-          metadata: {
-            description: foodDescription,
-            image: foodPhoto,
+    await user.set(
+      {
+        foods: [
+          ...(record.get<keyof { foods: [] }>('foods') ?? []),
+          {
+            type: IRecordType.Food,
+            createdDate: new Date().toISOString(),
+            metadata: {
+              description: foodDescription,
+              image: foodPhoto,
+            },
           },
-        },
-      ],
-    });
+        ],
+      },
+      { merge: true }
+    );
   };
   return (
     <View>
