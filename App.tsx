@@ -15,6 +15,7 @@ import MedicationScreen from './src/screens/MedicationScreen/MedicationScreen';
 import MenuScreen from './src/screens/MenuScreen/MenuScreen';
 import Mood from './src/screens/Mood/Mood';
 import Pain from './src/screens/Pain/Pain';
+import Settings from './src/screens/Settings/Settings';
 import SignedOut from './src/screens/SignedOut/SignedOut';
 import Summary from './src/screens/Summary/Summary';
 
@@ -28,6 +29,7 @@ export type RootStackParamList = {
   Food: undefined;
   Mood: undefined;
   Pain: undefined;
+  Settings: undefined;
 };
 
 declare global {
@@ -92,6 +94,7 @@ function App() {
               <Stack.Screen name="Food" component={Food} />
               <Stack.Screen name="Mood" component={Mood} />
               <Stack.Screen name="Pain" component={Pain} />
+              <Stack.Screen name="Settings" component={Settings} />
             </Stack.Group>
           ) : (
             <Stack.Group>

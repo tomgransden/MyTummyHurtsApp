@@ -72,26 +72,13 @@ const Summary = () => {
               axisOptions={{ font, tickCount: { x: 7, y: 10 } }}
               padding={8}
               domainPadding={40}
-              data={[
-                { date: 'Fri', pain: null },
-                { date: 'Sat', pain: null },
-                { date: 'Sun', pain: null },
-                { date: 'Mon', pain: null },
-                { date: 'Tue', pain: 9 },
-                { date: 'Wed', pain: null },
-                { date: 'Thu', pain: 5 },
-              ]}
+              data={results}
               xKey={'date'}
               yKeys={['pain']}>
               {({ points }) => (
                 <>
                   <Scatter points={points.pain} color={'red'} radius={5} />
-                  <Line
-                    connectMissingData
-                    points={points.pain}
-                    color="red"
-                    strokeWidth={1}
-                    animate={{ type: 'timing', duration: 300 }}>
+                  <Line connectMissingData points={points.pain} color="red" strokeWidth={1}>
                     <DashPathEffect intervals={[4, 4]} />
                   </Line>
                 </>
