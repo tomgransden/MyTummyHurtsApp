@@ -29,7 +29,13 @@ const PainTile = ({ item }: { item: IPainDataPoint }) => (
           {item.metadata.painScore}
         </Text>
       </View>
-      <Text style={styles.description}>You recorded that you had pain</Text>
+      <View>
+        <Text style={styles.description}>You recorded that you had pain</Text>
+
+        <Text style={styles.description}>
+          <Text style={{ fontFamily: 'Rubik-Bold' }}>Notes:</Text> {item.metadata.painDescription}
+        </Text>
+      </View>
     </View>
   </View>
 );

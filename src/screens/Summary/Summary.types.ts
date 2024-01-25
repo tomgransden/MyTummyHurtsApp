@@ -38,6 +38,7 @@ export type IPainDataPoint = IDataPointBase & {
   type: IRecordType.Pain;
   metadata: {
     painScore: number;
+    painDescription?: string;
   };
 };
 

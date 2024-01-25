@@ -97,7 +97,7 @@ const Summary = () => {
               </View>
             ))
           : null}
-        {results.length === 0 && !loading ? (
+        {summary?.length === 0 && !loading ? (
           <Text style={styles.empty}>Add an entry to get started</Text>
         ) : null}
       </ScrollView>

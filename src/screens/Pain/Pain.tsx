@@ -3,7 +3,7 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 
 import Button from '../../components/Button/Button';
 import { IRecordType } from '../Summary/Summary.types';
@@ -11,6 +11,7 @@ import { IRecordType } from '../Summary/Summary.types';
 const Pain = () => {
   const [painScore, setPainScore] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [painDescription, setPainDescription] = useState<string | undefined>();
   const navigation = useNavigation();
 
   const submitPainScore = async () => {
@@ -30,6 +31,7 @@ const Pain = () => {
             createdDate: new Date().toISOString(),
             metadata: {
               painScore,
+              painDescription,
             },
           },
         ],
@@ -67,6 +69,24 @@ const Pain = () => {
           </Text>
         ))}
       </View>
+
+      <TextInput
+        maxLength={100}
+        onChangeText={(text) => setPainDescription(text)}
+        placeholderTextColor="gray"
+        placeholder="Enter any notes here (up to 100 characters)"
+        multiline
+        style={{
+          color: 'gray',
+          marginHorizontal: 16,
+          marginBottom: 32,
+          padding: 16,
+          height: 140,
+          borderColor: 'mediumpurple',
+          borderWidth: 1,
+          fontSize: 16,
+        }}
+      />
       <Button loading={loading} title="Submit pain score" onPress={submitPainScore} />
     </View>
   );
