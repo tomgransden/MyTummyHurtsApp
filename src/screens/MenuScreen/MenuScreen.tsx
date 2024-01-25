@@ -45,7 +45,12 @@ const MenuScreen = ({ navigation }: IMenuScreenProps) => {
           }}
         />
         <Button title={'My profile'} onPress={() => {}} />
-        <Button title={'Settings'} onPress={() => {}} />
+        <Button
+          title={'Settings'}
+          onPress={() => {
+            navigation.navigate('Settings');
+          }}
+        />
         <Button
           title={'Logout'}
           onPress={() => {

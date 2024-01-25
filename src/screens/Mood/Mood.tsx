@@ -5,7 +5,10 @@ import { View, Text } from 'react-native';
 
 import { IRecordType } from '../Summary/Summary.types';
 
-type IMood = { mood: string; moodIcon: keyof (typeof MaterialCommunityIcons)['glyphMap'] };
+type IMood = {
+  mood: 'sad' | 'angry' | 'sick' | 'neutral' | 'happy';
+  moodIcon: keyof (typeof MaterialCommunityIcons)['glyphMap'];
+};
 
 const moodIcons: IMood[] = [
   { mood: 'sad', moodIcon: 'emoticon-cry-outline' },

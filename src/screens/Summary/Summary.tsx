@@ -1,7 +1,8 @@
 import functions from '@react-native-firebase/functions';
+import { DashPathEffect, matchFont } from '@shopify/react-native-skia';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, Dimensions, SafeAreaView, ScrollView, Text, View } from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
+import { ActivityIndicator, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { CartesianChart, Line, Scatter } from 'victory-native';
 
 import styles from './Summary.style';
 import { IRecordType, IDataPoint } from './Summary.types';
@@ -10,28 +11,7 @@ import MedicationTile from './subcomponents/MedicationTile/MedicationTile';
 import MoodTile from './subcomponents/MoodTile/MoodTile';
 import PainTile from './subcomponents/PainTile/PainTile';
 
-// Data for react-native-chart-kit
-const chartConfig = {
-  backgroundGradientFrom: '#bfa2c8',
-  backgroundGradientFromOpacity: 1,
-  backgroundGradientTo: '#bfa2c8',
-  backgroundGradientToOpacity: 1,
-  color: () => 'mediumpurple',
-  strokeWidth: 2,
-  barPercentage: 0.5,
-  useShadowColorFromDataset: false, // optional
-};
-
-const data = {
-  datasets: [
-    {
-      data: [0, 4, 0, 0, 0, 0, 9, 10],
-      color: () => `mediumpurple`, // optional
-      strokeWidth: 2, // optional
-    },
-  ],
-  labels: [],
-};
+const font = matchFont({ fontSize: 12 });
 
 const renderItem = (item: IDataPoint, index: number) => {
   switch (item.type) {
@@ -50,39 +30,67 @@ const renderItem = (item: IDataPoint, index: number) => {
 
 const Summary = () => {
   const [loading, setLoading] = useState(true);
-  const [results, setResults] = useState<{ displayDate: string; sortedEntries: [] }[]>([]);
+  const [results, setResults] = useState<
+    { date: string; pain: number | null; bowel: number | null }[]
+  >([]);
+  const [summary, setSummary] = useState<{ displayDate: string; sortedEntries: [] }[]>();
   useEffect(() => {
+    functions()
+      .httpsCallable('generateVictoryDataForPeriod')()
+      .then(({ data }) => {
+        console.log(JSON.stringify(JSON.parse(data)));
+        setResults(JSON.parse(data));
+        setLoading(false);
+      });
+
     functions()
       .httpsCallable('aggregateResults')()
       .then(({ data }) => {
         console.log(JSON.stringify(JSON.parse(data)));
-        setResults(JSON.parse(data));
+        setSummary(JSON.parse(data));
         setLoading(false);
       });
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
-      {data ? (
-        <LineChart
-          data={data}
-          width={Dimensions.get('screen').width}
-          height={250}
-          chartConfig={chartConfig}
-          withVerticalLabels={false}
-          withHorizontalLabels={false}
-          withInnerLines
-          withShadow={false}
-          style={styles.chart}
-          bezier
-          fromZero
-          hidePointsAtIndex={[3]}
-        />
+      {results.length ? (
+        <>
+          <View
+            style={{
+              marginTop: 12,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <View style={{ height: 10, width: 10, borderRadius: 25, backgroundColor: 'red' }} />
+            <Text style={{ marginLeft: 8 }}>Pain</Text>
+          </View>
+          <View style={{ height: 300 }}>
+            <CartesianChart
+              domain={{ y: [2, 9] }}
+              axisOptions={{ font, tickCount: { x: 7, y: 10 } }}
+              padding={8}
+              domainPadding={40}
+              data={results}
+              xKey={'date'}
+              yKeys={['pain']}>
+              {({ points }) => (
+                <>
+                  <Scatter points={points.pain} color={'red'} radius={5} />
+                  <Line connectMissingData points={points.pain} color="red" strokeWidth={1}>
+                    <DashPathEffect intervals={[4, 4]} />
+                  </Line>
+                </>
+              )}
+            </CartesianChart>
+          </View>
+        </>
       ) : null}
 
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-        {results.length > 0
-          ? results.map(({ displayDate, sortedEntries }) => (
+        {summary
+          ? summary.map(({ displayDate, sortedEntries }) => (
               <View key={displayDate}>
                 <Text style={styles.date}>{displayDate}</Text>
                 {sortedEntries.map((item, index) => renderItem(item, index))}

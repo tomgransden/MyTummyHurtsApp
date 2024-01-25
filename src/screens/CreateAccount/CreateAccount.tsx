@@ -1,6 +1,9 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { Button, TextInput, View } from 'react-native';
+import { View } from 'react-native';
+
+import Button from '../../components/Button/Button';
+import TextInput from '../../components/TextInput/TextInput';
 
 const CreateAccount = () => {
   const createAccount = async () => {
@@ -13,9 +16,15 @@ const CreateAccount = () => {
   };
 
   return (
-    <View>
+    <View style={{ marginTop: 20, marginHorizontal: 12 }}>
       <TextInput placeholder="Email address" />
-      <TextInput placeholder="Password" textContentType="password" secureTextEntry />
+      <View style={{ height: 10 }} />
+      <TextInput
+        style={{ marginBottom: 16 }}
+        placeholder="Password"
+        textContentType="password"
+        secureTextEntry
+      />
       <Button onPress={createAccount} title="Create account" />
     </View>
   );

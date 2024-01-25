@@ -1,6 +1,8 @@
 import auth from '@react-native-firebase/auth';
 import { useState } from 'react';
-import { Button, TextInput, View } from 'react-native';
+import { Button, View } from 'react-native';
+
+import TextInput from '../../components/TextInput/TextInput';
 
 const Login = () => {
   const [email, setEmail] = useState('');
