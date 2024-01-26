@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import PageHeader from './src/components/PageHeader/PageHeader';
+import BowelMovements from './src/screens/BowelMovements/BowelMovements';
 import CreateAccount from './src/screens/CreateAccount/CreateAccount';
 import Food from './src/screens/Food/Food';
 import Login from './src/screens/Login/Login';
@@ -30,6 +31,7 @@ export type RootStackParamList = {
   Mood: undefined;
   Pain: undefined;
   Settings: undefined;
+  BowelMovements: undefined;
 };
 
 declare global {
@@ -95,6 +97,7 @@ function App() {
               <Stack.Screen name="Mood" component={Mood} />
               <Stack.Screen name="Pain" component={Pain} />
               <Stack.Screen name="Settings" component={Settings} />
+              <Stack.Screen name="BowelMovements" component={BowelMovements} />
             </Stack.Group>
           ) : (
             <Stack.Group>

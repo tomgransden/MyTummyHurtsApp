@@ -6,6 +6,7 @@ import { CartesianChart, Line, Scatter } from 'victory-native';
 
 import styles from './Summary.style';
 import { IRecordType, IDataPoint } from './Summary.types';
+import BowelTile from './subcomponents/BowelTile/BowelTile';
 import FoodTile from './subcomponents/FoodTile/FoodTile';
 import MedicationTile from './subcomponents/MedicationTile/MedicationTile';
 import MoodTile from './subcomponents/MoodTile/MoodTile';
@@ -23,6 +24,8 @@ const renderItem = (item: IDataPoint, index: number) => {
       return <MoodTile item={item} key={index} />;
     case IRecordType.Pain:
       return <PainTile item={item} key={index} />;
+    case IRecordType.Bowel:
+      return <BowelTile item={item} key={index} />;
     default:
       return null;
   }
@@ -63,8 +66,14 @@ const Summary = () => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <View style={{ height: 10, width: 10, borderRadius: 25, backgroundColor: 'red' }} />
-            <Text style={{ marginLeft: 8 }}>Pain</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View style={{ height: 10, width: 10, borderRadius: 25, backgroundColor: 'red' }} />
+              <Text style={{ marginLeft: 8 }}>Pain</Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 12 }}>
+              <View style={{ height: 10, width: 10, borderRadius: 25, backgroundColor: 'brown' }} />
+              <Text style={{ marginLeft: 8 }}>Bowel</Text>
+            </View>
           </View>
           <View style={{ height: 300 }}>
             <CartesianChart
@@ -74,11 +83,15 @@ const Summary = () => {
               domainPadding={40}
               data={results}
               xKey={'date'}
-              yKeys={['pain']}>
+              yKeys={['pain', 'bowel']}>
               {({ points }) => (
                 <>
                   <Scatter points={points.pain} color={'red'} radius={5} />
                   <Line connectMissingData points={points.pain} color="red" strokeWidth={1}>
+                    <DashPathEffect intervals={[4, 4]} />
+                  </Line>
+                  <Scatter points={points.bowel} color={'brown'} radius={5} />
+                  <Line connectMissingData points={points.bowel} color="brown" strokeWidth={1}>
                     <DashPathEffect intervals={[4, 4]} />
                   </Line>
                 </>

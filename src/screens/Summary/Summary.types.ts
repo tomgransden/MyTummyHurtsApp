@@ -5,6 +5,7 @@ export enum IRecordType {
   Food,
   Mood,
   Pain,
+  Bowel,
 }
 
 type IDataPointBase = {
@@ -42,4 +43,16 @@ export type IPainDataPoint = IDataPointBase & {
   };
 };
 
-export type IDataPoint = IMedicationDataPoint | IFoodDataPoint | IMoodDataPoint | IPainDataPoint;
+export type IBowelDataPoint = IDataPointBase & {
+  type: IRecordType.Bowel;
+  metadata: {
+    bristolScore: number;
+  };
+};
+
+export type IDataPoint =
+  | IMedicationDataPoint
+  | IFoodDataPoint
+  | IMoodDataPoint
+  | IPainDataPoint
+  | IBowelDataPoint;

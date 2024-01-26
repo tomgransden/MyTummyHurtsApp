@@ -2,10 +2,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import dayjs from 'dayjs';
 import { View, Text } from 'react-native';
 
-import styles from './MoodTile.style';
-import { IMoodDataPoint, IRecordType } from '../../Summary.types';
+import styles from './BowelTile.style';
+import { IBowelDataPoint, IRecordType } from '../../Summary.types';
 
-const MoodTile = ({ item }: { item: IMoodDataPoint }) => (
+const BowelTile = ({ item }: { item: IBowelDataPoint }) => (
   <View style={styles.container}>
     <View style={styles.titleContainer}>
       <View style={styles.timeContainer}>
@@ -17,12 +17,14 @@ const MoodTile = ({ item }: { item: IMoodDataPoint }) => (
       </View>
     </View>
     <View style={styles.contentContainer}>
-      <MaterialCommunityIcons color="mediumpurple" size={60} name={item.metadata.moodIcon} />
+      <MaterialCommunityIcons color="mediumpurple" size={60} name={'emoticon-poop'} />
       <Text style={styles.description}>
-        You recorded that you felt <Text style={{ fontWeight: 'bold' }}>{item.metadata.mood}</Text>
+        You recorded that you had a{' '}
+        <Text style={{ fontWeight: 'bold' }}>{item.metadata.bristolScore}</Text> on the Bristol
+        Stool Chart
       </Text>
     </View>
   </View>
 );
 
-export default MoodTile;
+export default BowelTile;
