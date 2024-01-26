@@ -4,6 +4,9 @@ import firestore from '@react-native-firebase/firestore';
 import { View, Text } from 'react-native';
 
 import { IRecordType } from '../Summary/Summary.types';
+import { useState } from 'react';
+import Button from '../../components/Button/Button';
+import { useNavigation } from '@react-navigation/native';
 
 type IMood = {
   mood: 'sad' | 'angry' | 'sick' | 'neutral' | 'happy';
@@ -19,7 +22,14 @@ const moodIcons: IMood[] = [
 ];
 
 const Mood = () => {
-  const submitMood = async (mood: IMood) => {
+
+  const [selectedMood, setSelectedMood] = useState<IMood | undefined>();
+  const [loading, setLoading] = useState(false);
+  const navigation = useNavigation();
+
+  const submitMood = async () => {
+
+    setLoading(true);
     const { uid } = auth().currentUser ?? {};
 
     console.log(uid);
@@ -35,8 +45,8 @@ const Mood = () => {
           {
             createdDate: new Date().toISOString(),
             metadata: {
-              mood: mood.mood,
-              moodIcon: mood.moodIcon,
+              mood: selectedMood?.mood,
+              moodIcon: selectedMood?.moodIcon,
             },
             type: IRecordType.Mood,
           },
@@ -44,6 +54,10 @@ const Mood = () => {
       },
       { merge: true }
     );
+
+    setLoading(false);
+
+    navigation.navigate('MainMenu');
   };
 
   return (
@@ -51,16 +65,19 @@ const Mood = () => {
       <Text style={{ fontFamily: 'Rubik', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>
         How are you feeling right now?
       </Text>
-      <View style={{ marginTop: 32, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+      <View style={{ marginTop: 32, marginBottom: 16, flexDirection: 'row', justifyContent: 'space-evenly' }}>
         {moodIcons.map((item) => (
           <MaterialCommunityIcons
             key={item.mood}
             size={60}
             name={item.moodIcon}
-            onPress={() => submitMood(item)}
+            color={selectedMood === item ? 'black' : 'grey'}
+            onPress={() => setSelectedMood(item)}
           />
         ))}
       </View>
+
+      {selectedMood ? <Button loading={loading} onPress={submitMood} title='Submit mood'/> : null}
     </View>
   );
 };

@@ -17,7 +17,7 @@ const MoodTile = ({ item }: { item: IMoodDataPoint }) => (
       </View>
     </View>
     <View style={styles.contentContainer}>
-      <MaterialCommunityIcons size={60} name={item.metadata.moodIcon} />
+      <MaterialCommunityIcons color='mediumpurple' size={60} name={item.metadata.moodIcon} />
       <Text style={styles.description}>
         You recorded that you felt <Text style={{ fontWeight: 'bold' }}>{item.metadata.mood}</Text>
       </Text>
