@@ -1,12 +1,12 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import { View, Text } from 'react-native';
 
-import { IRecordType } from '../Summary/Summary.types';
-import { useState } from 'react';
 import Button from '../../components/Button/Button';
-import { useNavigation } from '@react-navigation/native';
+import { IRecordType } from '../Summary/Summary.types';
 
 type IMood = {
   mood: 'sad' | 'angry' | 'sick' | 'neutral' | 'happy';
@@ -22,13 +22,11 @@ const moodIcons: IMood[] = [
 ];
 
 const Mood = () => {
-
   const [selectedMood, setSelectedMood] = useState<IMood | undefined>();
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
   const submitMood = async () => {
-
     setLoading(true);
     const { uid } = auth().currentUser ?? {};
 
@@ -65,7 +63,13 @@ const Mood = () => {
       <Text style={{ fontFamily: 'Rubik', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>
         How are you feeling right now?
       </Text>
-      <View style={{ marginTop: 32, marginBottom: 16, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+      <View
+        style={{
+          marginTop: 32,
+          marginBottom: 16,
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+        }}>
         {moodIcons.map((item) => (
           <MaterialCommunityIcons
             key={item.mood}
@@ -77,7 +81,7 @@ const Mood = () => {
         ))}
       </View>
 
-      {selectedMood ? <Button loading={loading} onPress={submitMood} title='Submit mood'/> : null}
+      {selectedMood ? <Button loading={loading} onPress={submitMood} title="Submit mood" /> : null}
     </View>
   );
 };

@@ -15,6 +15,7 @@ const circleMenuOptions: IMenuOption[] = [
   //{ title: 'Weight', pageToNavigateTo: 'Summary' },
   { title: 'Mood', pageToNavigateTo: 'Mood' },
   { title: 'Pain', pageToNavigateTo: 'Pain' },
+  { title: 'Bowel movements', pageToNavigateTo: 'BowelMovements' },
 ];
 
 const MenuScreen = ({ navigation }: IMenuScreenProps) => {
