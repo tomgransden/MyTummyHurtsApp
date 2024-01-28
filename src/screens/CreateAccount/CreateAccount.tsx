@@ -3,6 +3,7 @@ import firestore from '@react-native-firebase/firestore';
 import { useState } from 'react';
 import { View } from 'react-native';
 
+import { styles } from './CreateAccount.style';
 import Button from '../../components/Button/Button';
 import TextInput from '../../components/TextInput/TextInput';
 
@@ -21,15 +22,15 @@ const CreateAccount = () => {
   };
 
   return (
-    <View style={{ marginTop: 20, marginHorizontal: 12 }}>
+    <View style={styles.container}>
       <TextInput
         onChangeText={(text) => setUsername(text)}
-        style={{ marginBottom: 16 }}
+        style={styles.input}
         placeholder="Email address"
       />
       <TextInput
         onChangeText={(text) => setPassword(text)}
-        style={{ marginBottom: 16 }}
+        style={styles.input}
         placeholder="Password"
         textContentType="password"
         secureTextEntry

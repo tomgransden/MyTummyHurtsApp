@@ -2,6 +2,7 @@ import auth from '@react-native-firebase/auth';
 import { useState } from 'react';
 import { View } from 'react-native';
 
+import { styles } from './Login.style';
 import Button from '../../components/Button/Button';
 import TextInput from '../../components/TextInput/TextInput';
 
@@ -21,14 +22,14 @@ const Login = () => {
   };
 
   return (
-    <View style={{ marginTop: 20, marginHorizontal: 12 }}>
+    <View style={styles.container}>
       <TextInput
-        style={{ marginBottom: 16 }}
+        style={styles.input}
         onChangeText={(text) => setEmail(text)}
         placeholder="Email address"
       />
       <TextInput
-        style={{ marginBottom: 16 }}
+        style={styles.input}
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
         placeholder="Password"

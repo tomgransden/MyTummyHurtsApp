@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     width: 250,
+    minHeight: 48,
     alignSelf: 'center',
     backgroundColor: 'mediumpurple',
     borderWidth: 1,

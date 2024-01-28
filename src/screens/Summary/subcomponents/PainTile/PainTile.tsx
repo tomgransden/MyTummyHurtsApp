@@ -16,24 +16,14 @@ const PainTile = ({ item }: { item: IPainDataPoint }) => (
       </View>
     </View>
     <View style={styles.contentContainer}>
-      <View
-        style={{
-          height: 60,
-          width: 60,
-          backgroundColor: 'mediumpurple',
-          borderRadius: 30,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <Text style={{ fontSize: 24, color: 'white', fontWeight: 'bold' }}>
-          {item.metadata.painScore}
-        </Text>
+      <View style={styles.painScoreContainer}>
+        <Text style={styles.painScore}>{item.metadata.painScore}</Text>
       </View>
       <View>
         <Text style={styles.description}>You recorded that you had pain</Text>
 
         <Text style={styles.description}>
-          <Text style={{ fontFamily: 'Rubik-Bold' }}>Notes:</Text> {item.metadata.painDescription}
+          <Text style={styles.notes}>Notes:</Text> {item.metadata.painDescription}
         </Text>
       </View>
     </View>

@@ -59,23 +59,17 @@ const Summary = () => {
     <SafeAreaView style={styles.container}>
       {results.length ? (
         <>
-          <View
-            style={{
-              marginTop: 12,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <View style={{ height: 10, width: 10, borderRadius: 25, backgroundColor: 'red' }} />
-              <Text style={{ marginLeft: 8 }}>Pain</Text>
+          <View style={styles.keyContainer}>
+            <View style={styles.key}>
+              <View style={styles.painKey} />
+              <Text style={styles.keyTitle}>Pain</Text>
             </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 12 }}>
-              <View style={{ height: 10, width: 10, borderRadius: 25, backgroundColor: 'brown' }} />
-              <Text style={{ marginLeft: 8 }}>Bowel</Text>
+            <View style={styles.key}>
+              <View style={styles.bowelKey} />
+              <Text style={styles.keyTitle}>Bowel</Text>
             </View>
           </View>
-          <View style={{ height: 300 }}>
+          <View style={styles.chartContainer}>
             <CartesianChart
               domain={{ y: [2, 9] }}
               axisOptions={{ font, tickCount: { x: 7, y: 10 } }}

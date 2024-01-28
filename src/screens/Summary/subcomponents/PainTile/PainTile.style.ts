@@ -25,6 +25,16 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   description: { marginLeft: 16, fontFamily: 'Rubik', flex: 1, flexWrap: 'wrap' },
+  painScoreContainer: {
+    height: 60,
+    width: 60,
+    backgroundColor: 'mediumpurple',
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  painScore: { fontSize: 24, color: 'white', fontWeight: 'bold' },
+  notes: { fontFamily: 'Rubik-Bold' },
 });
 
 export default styles;

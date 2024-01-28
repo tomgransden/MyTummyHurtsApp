@@ -19,9 +19,8 @@ const BowelTile = ({ item }: { item: IBowelDataPoint }) => (
     <View style={styles.contentContainer}>
       <MaterialCommunityIcons color="brown" size={60} name={'emoticon-poop'} />
       <Text style={styles.description}>
-        You recorded that you had a{' '}
-        <Text style={{ fontWeight: 'bold' }}>{item.metadata.bristolScore}</Text> on the Bristol
-        Stool Chart
+        You recorded that you had a <Text style={styles.bold}>{item.metadata.bristolScore}</Text> on
+        the Bristol Stool Chart
       </Text>
     </View>
   </View>

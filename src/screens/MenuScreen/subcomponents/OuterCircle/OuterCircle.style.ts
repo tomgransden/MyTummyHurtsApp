@@ -14,6 +14,13 @@ const styles = StyleSheet.create({
     fontFamily: 'RubikBubbles-Regular',
     textAlign: 'center',
   },
+  touchable: {
+    width: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+    borderRadius: 50,
+  },
 });
 
 export default styles;

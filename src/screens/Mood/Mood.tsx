@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { View, Text } from 'react-native';
 
+import { styles } from './Mood.style';
 import Button from '../../components/Button/Button';
 import { IRecordType } from '../Summary/Summary.types';
 
@@ -60,16 +61,8 @@ const Mood = () => {
 
   return (
     <View>
-      <Text style={{ fontFamily: 'Rubik', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>
-        How are you feeling right now?
-      </Text>
-      <View
-        style={{
-          marginTop: 32,
-          marginBottom: 16,
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-        }}>
+      <Text style={styles.heading}>How are you feeling right now?</Text>
+      <View style={styles.moodsContainer}>
         {moodIcons.map((item) => (
           <MaterialCommunityIcons
             key={item.mood}
