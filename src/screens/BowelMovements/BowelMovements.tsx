@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { View, Text, Image } from 'react-native';
 
+import { styles } from './BowelMovements.style';
 import Button from '../../components/Button/Button';
 import { IRecordType } from '../Summary/Summary.types';
 
@@ -39,8 +40,6 @@ const BowelMovements = () => {
 
     const { uid } = auth().currentUser ?? {};
 
-    console.log(uid);
-
     const user = firestore().collection('users').doc(uid);
 
     const record = await user.get();
@@ -67,27 +66,21 @@ const BowelMovements = () => {
   };
 
   return (
-    <View>
-      <View
-        style={{
-          marginHorizontal: 16,
-          marginTop: 12,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
-        <Text style={{ fontSize: 16 }}>
+    <>
+      <View style={styles.container}>
+        <Text style={styles.text}>
           Time of movement:{' '}
-          <Text style={{ fontWeight: 'bold' }}>
+          <Text style={styles.bold}>
             {userSelectedDate ? dayjs(dateTime).format('hh:mm a') : 'Now'}
           </Text>
         </Text>
-        <Text onPress={chooseTime} style={{ fontSize: 16, fontWeight: 'bold' }}>
+        <Text onPress={chooseTime} style={[styles.text, styles.bold]}>
           Change
         </Text>
       </View>
 
       <View>
-        <Image source={bristol} style={{ width: '100%', height: 300 }} />
+        <Image source={bristol} style={styles.image} />
 
         <Slider
           onValueChange={(val) => setBristolScore(val)}
@@ -96,15 +89,9 @@ const BowelMovements = () => {
           step={1}
         />
 
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginHorizontal: 11,
-            marginBottom: 24,
-          }}>
+        <View style={styles.scores}>
           {[...Array(7).keys()].map((item) => (
-            <Text key={item} style={{ fontSize: 18 }}>
+            <Text key={item} style={styles.scoreText}>
               {item + 1}
             </Text>
           ))}
@@ -121,7 +108,7 @@ const BowelMovements = () => {
           onChange={selectTime}
         />
       )}
-    </View>
+    </>
   );
 };
 

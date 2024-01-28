@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   description: { marginLeft: 16, fontFamily: 'Rubik', flex: 1, flexWrap: 'wrap' },
+  bold: { fontWeight: 'bold' },
 });
 
 export default styles;

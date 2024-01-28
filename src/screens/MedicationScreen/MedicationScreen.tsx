@@ -64,12 +64,7 @@ const MedicationScreen = ({ navigation }: IMedicationScreenProps) => {
 
   return (
     <View style={styles.container}>
-      {!medication.length ? (
-        <Text
-          style={{ fontFamily: 'Rubik', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>
-          No medications available
-        </Text>
-      ) : null}
+      {!medication.length ? <Text style={styles.emptyText}>No medications available</Text> : null}
       <View style={styles.pillList}>
         {medication.map((element) => (
           <Pill key={element} name={element} onPress={() => {}} />
@@ -84,20 +79,14 @@ const MedicationScreen = ({ navigation }: IMedicationScreenProps) => {
         keyboardBehavior="interactive"
         keyboardBlurBehavior="restore"
         onChange={handleSheetChanges}>
-        <View style={{ marginHorizontal: 16 }}>
-          <Text
-            style={{
-              fontSize: 24,
-              fontFamily: 'Rubik',
-              fontWeight: 'bold',
-              color: 'mediumpurple',
-            }}>
+        <View style={styles.bottomSheetContainer}>
+          <Text style={styles.bottomSheetTitle}>
             What is the name and dosage of your new medication?
           </Text>
           <BottomSheetTextInput
             ref={inputRef}
             placeholder={'Enter name/dosage here...'}
-            style={{ fontSize: 20, fontFamily: 'Rubik', marginTop: 12 }}
+            style={styles.bottomSheetTextInput}
             onEndEditing={async (e) => {
               if (e.nativeEvent.text.length) {
                 const newMeds = [...medication, e.nativeEvent.text];

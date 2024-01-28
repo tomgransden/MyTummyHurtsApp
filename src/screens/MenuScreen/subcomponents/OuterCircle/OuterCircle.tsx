@@ -13,7 +13,7 @@ const OuterCircle = ({ index, degreesPerSegment, onPress, text }: IOuterCirclePr
         transform: [{ rotate: index * degreesPerSegment + 90 + 'deg' }, { translateX: 140 }],
       },
     ]}>
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} style={styles.touchable}>
       <Text
         style={[
           styles.outerCircleText,
