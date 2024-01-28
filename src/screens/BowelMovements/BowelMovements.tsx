@@ -22,7 +22,7 @@ const BowelMovements = () => {
   const navigation = useNavigation();
 
   const chooseTime = () => {
-    setShow(true);
+    //setShow(true);
   };
 
   const selectTime = (event: DateTimePickerEvent, date: Date) => {
@@ -100,12 +100,12 @@ const BowelMovements = () => {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            marginHorizontal: 10,
+            marginHorizontal: 11,
             marginBottom: 24,
           }}>
           {[...Array(7).keys()].map((item) => (
             <Text key={item} style={{ fontSize: 18 }}>
-              {Number(item) + 1}
+              {item + 1}
             </Text>
           ))}
         </View>

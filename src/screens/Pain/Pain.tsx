@@ -71,6 +71,7 @@ const Pain = () => {
       </View>
 
       <TextInput
+        textAlignVertical="top"
         maxLength={100}
         onChangeText={(text) => setPainDescription(text)}
         placeholderTextColor="gray"
