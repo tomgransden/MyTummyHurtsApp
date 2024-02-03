@@ -5,13 +5,60 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Platform } from 'react-native';
 
 import { styles } from './BowelMovements.style';
 import Button from '../../components/Button/Button';
 import { IRecordType } from '../Summary/Summary.types';
 
 const bristol = require('../../../assets/bristol.png');
+
+const IOSHeader = ({
+  dateTime,
+  selectTime,
+}: {
+  dateTime: Date;
+  selectTime: (event: DateTimePickerEvent, date: Date) => void;
+}) => {
+  return (
+    <View style={styles.containerIos}>
+      <Text style={styles.text}>Time of movement: </Text>
+      {Platform.OS === 'ios' ? (
+        <DateTimePicker
+          style={{ marginLeft: -8 }}
+          display="clock"
+          testID="dateTimePicker"
+          value={dateTime}
+          mode={'time'}
+          onChange={selectTime}
+        />
+      ) : null}
+    </View>
+  );
+};
+const AndroidHeader = ({
+  dateTime,
+  userSelectedDate,
+  chooseTime,
+}: {
+  dateTime: Date;
+  userSelectedDate: boolean;
+  chooseTime: () => void;
+}) => {
+  return (
+    <View style={styles.containerAndroid}>
+      <Text style={styles.text}>
+        Time of movement:{' '}
+        <Text style={styles.bold}>
+          {userSelectedDate ? dayjs(dateTime).format('hh:mm a') : 'Now'}
+        </Text>
+      </Text>
+      <Text onPress={chooseTime} style={[styles.text, styles.bold]}>
+        Change
+      </Text>
+    </View>
+  );
+};
 
 const BowelMovements = () => {
   const [dateTime, setDateTime] = useState<Date>(new Date());
@@ -23,7 +70,7 @@ const BowelMovements = () => {
   const navigation = useNavigation();
 
   const chooseTime = () => {
-    //setShow(true);
+    setShow(true);
   };
 
   const selectTime = (event: DateTimePickerEvent, date: Date) => {
@@ -67,17 +114,15 @@ const BowelMovements = () => {
 
   return (
     <>
-      <View style={styles.container}>
-        <Text style={styles.text}>
-          Time of movement:{' '}
-          <Text style={styles.bold}>
-            {userSelectedDate ? dayjs(dateTime).format('hh:mm a') : 'Now'}
-          </Text>
-        </Text>
-        <Text onPress={chooseTime} style={[styles.text, styles.bold]}>
-          Change
-        </Text>
-      </View>
+      {Platform.OS === 'ios' ? (
+        <IOSHeader dateTime={dateTime} selectTime={selectTime} />
+      ) : (
+        <AndroidHeader
+          userSelectedDate={userSelectedDate}
+          dateTime={dateTime}
+          chooseTime={chooseTime}
+        />
+      )}
 
       <View>
         <Image source={bristol} style={styles.image} />
@@ -100,14 +145,16 @@ const BowelMovements = () => {
 
       <Button loading={loading} title="Submit" onPress={submitBowelMovement} />
 
-      {show && (
+      {show ? (
         <DateTimePicker
+          style={{ marginLeft: -12 }}
+          display="clock"
           testID="dateTimePicker"
           value={dateTime}
           mode={'time'}
           onChange={selectTime}
         />
-      )}
+      ) : null}
     </>
   );
 };
