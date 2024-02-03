@@ -4,6 +4,7 @@ export default {
       'expo-font',
       '@react-native-firebase/app',
       '@react-native-firebase/auth',
+      '@react-native-firebase/crashlytics',
       [
         'expo-build-properties',
         {
@@ -15,7 +16,7 @@ export default {
     ],
     name: 'My Tummy Hurts',
     slug: 'my-tummy-hurts',
-    version: '0.0.23',
+    version: '0.0.26',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
@@ -33,7 +34,7 @@ export default {
       supportsTablet: false,
       bundleIdentifier: 'com.tgransdenapps.mytummyhurts',
       googleServicesFile: process.env.IOS_GOOGLE_SERVICES_PLIST ?? './GoogleService-Info.plist',
-      buildNumber: '23',
+      buildNumber: '26',
       icon: './assets/ios-icon.png',
     },
     android: {
@@ -43,7 +44,7 @@ export default {
         monochromeImage: './assets/ic_launcher_monochrome.png',
       },
       package: 'com.tgransdenapps.mytummyhurts',
-      versionCode: 23,
+      versionCode: 26,
       googleServicesFile: process.env.ANDROID_GOOGLE_SERVICES_JSON,
     },
     web: {
