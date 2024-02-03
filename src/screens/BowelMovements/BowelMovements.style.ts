@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   scores: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 11,
+    marginHorizontal: 24,
     marginBottom: 24,
   },
   scoreText: { fontSize: 18 },

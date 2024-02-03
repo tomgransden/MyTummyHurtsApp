@@ -128,6 +128,7 @@ const BowelMovements = () => {
         <Image source={bristol} style={styles.image} />
 
         <Slider
+          style={{ marginHorizontal: 12 }}
           onValueChange={(val) => setBristolScore(val)}
           minimumValue={1}
           maximumValue={7}
