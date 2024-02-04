@@ -1,7 +1,5 @@
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import Slider from '@react-native-community/slider';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { useState } from 'react';
@@ -9,6 +7,7 @@ import { View, Text, Image, Platform } from 'react-native';
 
 import { styles } from './BowelMovements.style';
 import Button from '../../components/Button/Button';
+import { addToDatabase } from '../../utils/add-to-database';
 import { IRecordType } from '../Summary/Summary.types';
 
 const bristol = require('../../../assets/bristol.png');
@@ -85,27 +84,13 @@ const BowelMovements = () => {
   const submitBowelMovement = async () => {
     setLoading(true);
 
-    const { uid } = auth().currentUser ?? {};
-
-    const user = firestore().collection('users').doc(uid);
-
-    const record = await user.get();
-
-    await user.set(
-      {
-        bowel: [
-          ...(record.get<'bowel'>('bowel') ?? []),
-          {
-            type: IRecordType.Bowel,
-            createdDate: dateTime.toISOString(),
-            metadata: {
-              bristolScore,
-            },
-          },
-        ],
+    await addToDatabase({
+      type: IRecordType.Bowel,
+      createdDate: dateTime.toISOString(),
+      metadata: {
+        bristolScore,
       },
-      { merge: true }
-    );
+    });
 
     setLoading(false);
 

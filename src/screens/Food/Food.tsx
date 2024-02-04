@@ -1,37 +1,32 @@
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { Button, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 
+import Button from '../../components/Button/Button';
+import { addToDatabase } from '../../utils/add-to-database';
 import { IRecordType } from '../Summary/Summary.types';
 
 const Food = () => {
   const [foodDescription, setFoodDescription] = useState('');
   const [foodPhoto] = useState('http://placekitten.com/500/500');
+  const [loading, setLoading] = useState(false);
+  const navigation = useNavigation();
 
   const submitFood = async () => {
-    const { uid } = auth().currentUser ?? {};
+    setLoading(true);
 
-    const user = firestore().collection('users').doc(uid);
-
-    const record = await user.get();
-
-    await user.set(
-      {
-        foods: [
-          ...(record.get<keyof { foods: [] }>('foods') ?? []),
-          {
-            type: IRecordType.Food,
-            createdDate: new Date().toISOString(),
-            metadata: {
-              description: foodDescription,
-              image: foodPhoto,
-            },
-          },
-        ],
+    await addToDatabase({
+      type: IRecordType.Food,
+      createdDate: new Date().toISOString(),
+      metadata: {
+        description: foodDescription,
+        image: foodPhoto,
       },
-      { merge: true }
-    );
+    });
+
+    setLoading(false);
+
+    navigation.navigate('Summary');
   };
   return (
     <View>
@@ -39,7 +34,7 @@ const Food = () => {
         placeholder="Describe your food"
         onChangeText={(text) => setFoodDescription(text)}
       />
-      <Button onPress={submitFood} title="Submit" />
+      <Button loading={loading} onPress={submitFood} title="Submit" />
     </View>
   );
 };

@@ -9,7 +9,8 @@ export enum IRecordType {
 }
 
 type IDataPointBase = {
-  createdDate: Date;
+  createdDate: string;
+  id: string;
 };
 
 export type IMedicationDataPoint = IDataPointBase & {
@@ -39,7 +40,7 @@ export type IPainDataPoint = IDataPointBase & {
   type: IRecordType.Pain;
   metadata: {
     painScore: number;
-    painDescription?: string;
+    painDescription: string;
   };
 };
 
