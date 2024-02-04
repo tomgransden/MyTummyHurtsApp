@@ -63,7 +63,7 @@ const Summary = () => {
               <View style={styles.painKey} />
               <Text style={styles.keyTitle}>Pain</Text>
             </View>
-            <View style={[styles.key, {marginLeft: 12}]}>
+            <View style={[styles.key, { marginLeft: 12 }]}>
               <View style={styles.bowelKey} />
               <Text style={styles.keyTitle}>Bowel</Text>
             </View>
@@ -107,7 +107,11 @@ const Summary = () => {
           <Text style={styles.empty}>Add an entry to get started</Text>
         ) : null}
       </ScrollView>
-      {loadingSummary || loadingChart ? <View style={{flex: 1}}><ActivityIndicator size='large' /></View> : null}
+      {loadingSummary || loadingChart ? (
+        <View style={{ flex: 1 }}>
+          <ActivityIndicator size="large" />
+        </View>
+      ) : null}
     </SafeAreaView>
   );
 };
