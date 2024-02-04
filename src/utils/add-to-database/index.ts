@@ -4,7 +4,9 @@ import * as Crypto from 'expo-crypto';
 
 import { IDataPoint, IRecordType } from '../../screens/Summary/Summary.types';
 
-const getKeyForItem = (item: Omit<IDataPoint, 'id'>) => {
+type ItemWithoutId = Omit<IDataPoint, 'id'>;
+
+const getKeyForItem = (item: ItemWithoutId) => {
   switch (item.type) {
     case IRecordType.Bowel:
       return 'bowel';
@@ -20,7 +22,7 @@ const getKeyForItem = (item: Omit<IDataPoint, 'id'>) => {
   }
 };
 
-export const addToDatabase = async (item: Omit<IDataPoint, 'id'>) => {
+export const addToDatabase = async (item: ItemWithoutId) => {
   //Get current user id
   const { uid } = auth().currentUser ?? {};
 

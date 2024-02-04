@@ -31,32 +31,26 @@ const renderItem = (item: IDataPoint, index: number) => {
   }
 };
 
+type ISummaryResponse = {
+  chartData: { date: string; pain: number | null; bowel: number | null }[];
+  summaryData: { displayDate: string; sortedEntries: IDataPoint[] }[];
+};
+
 const Summary = () => {
-  const [loadingChart, setLoadingChart] = useState(true);
   const [loadingSummary, setLoadingSummary] = useState(true);
-  const [results, setResults] = useState<
-    { date: string; pain: number | null; bowel: number | null }[]
-  >([]);
-  const [summary, setSummary] = useState<{ displayDate: string; sortedEntries: [] }[]>();
+  const [data, setData] = useState<ISummaryResponse>();
   useEffect(() => {
     functions()
-      .httpsCallable('generateVictoryDataForPeriod')()
-      .then(({ data }) => {
-        setResults(JSON.parse(data));
-        setLoadingChart(false);
-      });
-
-    functions()
-      .httpsCallable('aggregateResults')()
-      .then(({ data }) => {
-        setSummary(JSON.parse(data));
+      .httpsCallable('getSummaryData')()
+      .then(({ data }: { data: ISummaryResponse }) => {
+        setData(data);
         setLoadingSummary(false);
       });
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
-      {results.length ? (
+      {data?.chartData.length ? (
         <>
           <View style={styles.keyContainer}>
             <View style={styles.key}>
@@ -74,7 +68,7 @@ const Summary = () => {
               axisOptions={{ font, tickCount: { x: 7, y: 10 } }}
               padding={8}
               domainPadding={40}
-              data={results}
+              data={data.chartData}
               xKey={'date'}
               yKeys={['pain', 'bowel']}>
               {({ points }) => (
@@ -95,19 +89,19 @@ const Summary = () => {
       ) : null}
 
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-        {summary
-          ? summary.map(({ displayDate, sortedEntries }) => (
+        {data?.summaryData
+          ? data.summaryData.map(({ displayDate, sortedEntries }) => (
               <View key={displayDate}>
                 <Text style={styles.date}>{displayDate}</Text>
                 {sortedEntries.map((item, index) => renderItem(item, index))}
               </View>
             ))
           : null}
-        {summary?.length === 0 && !loadingSummary ? (
+        {data?.summaryData?.length === 0 && !loadingSummary ? (
           <Text style={styles.empty}>Add an entry to get started</Text>
         ) : null}
       </ScrollView>
-      {loadingSummary || loadingChart ? (
+      {loadingSummary ? (
         <View style={{ flex: 1 }}>
           <ActivityIndicator size="large" />
         </View>
