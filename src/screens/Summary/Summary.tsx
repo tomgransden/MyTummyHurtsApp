@@ -32,7 +32,8 @@ const renderItem = (item: IDataPoint, index: number) => {
 };
 
 const Summary = () => {
-  const [loading, setLoading] = useState(true);
+  const [loadingChart, setLoadingChart] = useState(true);
+  const [loadingSummary, setLoadingSummary] = useState(true);
   const [results, setResults] = useState<
     { date: string; pain: number | null; bowel: number | null }[]
   >([]);
@@ -41,17 +42,15 @@ const Summary = () => {
     functions()
       .httpsCallable('generateVictoryDataForPeriod')()
       .then(({ data }) => {
-        console.log(JSON.stringify(JSON.parse(data)));
         setResults(JSON.parse(data));
-        setLoading(false);
+        setLoadingChart(false);
       });
 
     functions()
       .httpsCallable('aggregateResults')()
       .then(({ data }) => {
-        console.log(JSON.stringify(JSON.parse(data)));
         setSummary(JSON.parse(data));
-        setLoading(false);
+        setLoadingSummary(false);
       });
   }, []);
 
@@ -64,7 +63,7 @@ const Summary = () => {
               <View style={styles.painKey} />
               <Text style={styles.keyTitle}>Pain</Text>
             </View>
-            <View style={styles.key}>
+            <View style={[styles.key, {marginLeft: 12}]}>
               <View style={styles.bowelKey} />
               <Text style={styles.keyTitle}>Bowel</Text>
             </View>
@@ -104,11 +103,11 @@ const Summary = () => {
               </View>
             ))
           : null}
-        {summary?.length === 0 && !loading ? (
+        {summary?.length === 0 && !loadingSummary ? (
           <Text style={styles.empty}>Add an entry to get started</Text>
         ) : null}
       </ScrollView>
-      {loading ? <ActivityIndicator style={styles.loading} /> : null}
+      {loadingSummary || loadingChart ? <View style={{flex: 1}}><ActivityIndicator size='large' /></View> : null}
     </SafeAreaView>
   );
 };
