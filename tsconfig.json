@@ -5,5 +5,5 @@
       "@components": ["./src/components"]
     }
   },
-  "extends": "expo/tsconfig.base",
+  "extends": "expo/tsconfig.base"
 }
