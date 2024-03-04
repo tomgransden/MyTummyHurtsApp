@@ -14,11 +14,11 @@ export default {
         },
       ],
       [
-        "expo-camera",
+        'expo-camera',
         {
-          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
-        }
-      ]
+          cameraPermission: 'Allow $(PRODUCT_NAME) to access your camera',
+        },
+      ],
     ],
     name: 'My Tummy Hurts',
     slug: 'my-tummy-hurts',
