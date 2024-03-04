@@ -1,11 +1,10 @@
+import { Button, TextInput } from '@components';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { useState } from 'react';
 import { View } from 'react-native';
 
 import { styles } from './CreateAccount.style';
-import Button from '../../components/Button/Button';
-import TextInput from '../../components/TextInput/TextInput';
 
 const CreateAccount = () => {
   const [loading, setLoading] = useState(false);

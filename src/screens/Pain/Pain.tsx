@@ -1,3 +1,4 @@
+import { Button } from '@components';
 import Slider from '@react-native-community/slider';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -6,7 +7,6 @@ import { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
 
 import { styles } from './Pain.style';
-import Button from '../../components/Button/Button';
 import { IRecordType } from '../Summary/Summary.types';
 
 const Pain = () => {

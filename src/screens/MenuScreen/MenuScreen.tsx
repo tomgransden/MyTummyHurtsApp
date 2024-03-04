@@ -1,3 +1,4 @@
+import { Button } from '@components';
 import auth from '@react-native-firebase/auth';
 import React from 'react';
 import { SafeAreaView, View } from 'react-native';
@@ -6,7 +7,6 @@ import styles from './MenuScreen.style';
 import { IMenuScreenProps, IMenuOption } from './MenuScreen.type';
 import CentreCircle from './subcomponents/CentreCircle/CentreCircle';
 import OuterCircle from './subcomponents/OuterCircle/OuterCircle';
-import Button from '../../components/Button/Button';
 
 const circleMenuOptions: IMenuOption[] = [
   //{ title: 'Medication', pageToNavigateTo: 'Medication' },

@@ -1,3 +1,4 @@
+import { PageHeader } from '@components';
 import analytics from '@react-native-firebase/analytics';
 import auth from '@react-native-firebase/auth';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
@@ -8,7 +9,6 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useRef, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import PageHeader from './src/components/PageHeader/PageHeader';
 import BowelMovements from './src/screens/BowelMovements/BowelMovements';
 import CreateAccount from './src/screens/CreateAccount/CreateAccount';
 import Food from './src/screens/Food/Food';

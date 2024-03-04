@@ -1,3 +1,4 @@
+import { Button } from '@components';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import Slider from '@react-native-community/slider';
 import auth from '@react-native-firebase/auth';
@@ -8,7 +9,6 @@ import { useState } from 'react';
 import { View, Text, Image, Platform } from 'react-native';
 
 import { styles } from './BowelMovements.style';
-import Button from '../../components/Button/Button';
 import { IRecordType } from '../Summary/Summary.types';
 
 const bristol = require('../../../assets/bristol.png');

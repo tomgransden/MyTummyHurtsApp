@@ -1,3 +1,4 @@
+import { Button } from '@components';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -6,7 +7,6 @@ import { useState } from 'react';
 import { View, Text } from 'react-native';
 
 import { styles } from './Mood.style';
-import Button from '../../components/Button/Button';
 import { IRecordType } from '../Summary/Summary.types';
 
 type IMood = {
@@ -30,8 +30,6 @@ const Mood = () => {
   const submitMood = async () => {
     setLoading(true);
     const { uid } = auth().currentUser ?? {};
-
-    console.log(uid);
 
     const document = firestore().collection('users').doc(uid);
 

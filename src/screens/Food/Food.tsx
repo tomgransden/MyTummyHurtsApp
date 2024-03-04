@@ -1,15 +1,14 @@
+import { Button, TextInput } from '@components';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { randomUUID } from 'expo-crypto';
-import { launchImageLibraryAsync, getMediaLibraryPermissionsAsync } from 'expo-image-picker';
+import { launchImageLibraryAsync, requestMediaLibraryPermissionsAsync } from 'expo-image-picker';
 import { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 
-import Button from '../../components/Button/Button';
-import TextInput from '../../components/TextInput/TextInput';
 import { IRecordType } from '../Summary/Summary.types';
 
 const Food = () => {
@@ -19,14 +18,17 @@ const Food = () => {
   const navigation = useNavigation();
 
   const selectPhoto = async () => {
-    const result = await getMediaLibraryPermissionsAsync();
+    const result = await requestMediaLibraryPermissionsAsync();
 
     if (result.status === 'granted') {
       const image = await launchImageLibraryAsync({ allowsEditing: true, aspect: [1, 1] });
 
       setFoodPhoto(image.assets?.[0].uri);
     } else {
-      Alert.alert('Permissions needed', 'You must accept permissions to use this feature');
+      Alert.alert(
+        'Permissions needed',
+        'You must accept permissions to use this feature. This can be changed in your phone settings.'
+      );
     }
   };
 
