@@ -11,6 +11,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 8,
     marginBottom: 16,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   buttonText: {
     fontFamily: 'RubikBubbles-Regular',

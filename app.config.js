@@ -13,10 +13,16 @@ export default {
           },
         },
       ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
+        }
+      ]
     ],
     name: 'My Tummy Hurts',
     slug: 'my-tummy-hurts',
-    version: '0.0.26',
+    version: '0.0.29',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
@@ -34,7 +40,7 @@ export default {
       supportsTablet: false,
       bundleIdentifier: 'com.tgransdenapps.mytummyhurts',
       googleServicesFile: process.env.IOS_GOOGLE_SERVICES_PLIST ?? './GoogleService-Info.plist',
-      buildNumber: '26',
+      buildNumber: '29',
       icon: './assets/ios-icon.png',
     },
     android: {
@@ -44,7 +50,7 @@ export default {
         monochromeImage: './assets/ic_launcher_monochrome.png',
       },
       package: 'com.tgransdenapps.mytummyhurts',
-      versionCode: 26,
+      versionCode: 29,
       googleServicesFile: process.env.ANDROID_GOOGLE_SERVICES_JSON,
     },
     web: {

@@ -81,7 +81,7 @@ function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer
         ref={navigationRef}
-        onReady={() => {
+        onReady={async () => {
           routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name;
         }}
         onStateChange={async () => {
