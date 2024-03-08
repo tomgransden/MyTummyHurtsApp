@@ -39,18 +39,10 @@ const Summary = () => {
   const [summary, setSummary] = useState<{ displayDate: string; sortedEntries: [] }[]>();
   useEffect(() => {
     functions()
-      .httpsCallable('generateVictoryDataForPeriod')()
+      .httpsCallable('getSummaryData')()
       .then(({ data }) => {
-        console.log(JSON.stringify(JSON.parse(data)));
-        setResults(JSON.parse(data));
-        setLoading(false);
-      });
-
-    functions()
-      .httpsCallable('aggregateResults')()
-      .then(({ data }) => {
-        console.log(JSON.stringify(JSON.parse(data)));
-        setSummary(JSON.parse(data));
+        setResults(JSON.parse(JSON.stringify(data.chartData)));
+        setSummary(JSON.parse(JSON.stringify(data.summaryData)));
         setLoading(false);
       });
   }, []);

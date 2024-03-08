@@ -12,6 +12,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BowelMovements from './src/screens/BowelMovements/BowelMovements';
 import CreateAccount from './src/screens/CreateAccount/CreateAccount';
 import Food from './src/screens/Food/Food';
+import ImageZoomer from './src/screens/ImageZoomer/ImageZoomer';
 import Login from './src/screens/Login/Login';
 import MedicationScreen from './src/screens/MedicationScreen/MedicationScreen';
 import MenuScreen from './src/screens/MenuScreen/MenuScreen';
@@ -33,6 +34,7 @@ export type RootStackParamList = {
   Pain: undefined;
   Settings: undefined;
   BowelMovements: undefined;
+  ImageZoomer: { url: string };
 };
 
 declare global {
@@ -118,6 +120,7 @@ function App() {
               <Stack.Screen name="Pain" component={Pain} />
               <Stack.Screen name="Settings" component={Settings} />
               <Stack.Screen name="BowelMovements" component={BowelMovements} />
+              <Stack.Screen name="ImageZoomer" component={ImageZoomer} />
             </Stack.Group>
           ) : (
             <Stack.Group>
