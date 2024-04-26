@@ -4,7 +4,7 @@ import { RootStackParamList } from '../../../App';
 
 export type IMenuOption = {
   title: string;
-  pageToNavigateTo: keyof RootStackParamList;
+  pageToNavigateTo: 'BowelMovements' | 'Food' | 'Mood' | 'Pain';
 };
 
 export type IMenuScreenProps = NativeStackScreenProps<RootStackParamList, 'MainMenu'>;

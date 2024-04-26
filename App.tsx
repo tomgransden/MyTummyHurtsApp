@@ -17,6 +17,7 @@ import Login from './src/screens/Login/Login';
 import MedicationScreen from './src/screens/MedicationScreen/MedicationScreen';
 import MenuScreen from './src/screens/MenuScreen/MenuScreen';
 import Mood from './src/screens/Mood/Mood';
+import Onboarder from './src/screens/Onboarder/Onboarder';
 import Pain from './src/screens/Pain/Pain';
 import Settings from './src/screens/Settings/Settings';
 import SignedOut from './src/screens/SignedOut/SignedOut';
@@ -31,6 +32,7 @@ export type RootStackParamList = {
   Login: undefined;
   Food: undefined;
   Mood: undefined;
+  Onboarder: undefined;
   Pain: undefined;
   Settings: undefined;
   BowelMovements: undefined;
@@ -124,6 +126,11 @@ function App() {
             </Stack.Group>
           ) : (
             <Stack.Group>
+              <Stack.Screen
+                name="Onboarder"
+                component={Onboarder}
+                options={{ headerShown: false }}
+              />
               <Stack.Screen
                 name="SignedOut"
                 component={SignedOut}
