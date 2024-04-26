@@ -240,6 +240,7 @@ const CustomButton = ({
   return (
     <TouchableWithoutFeedback
       onPress={() => {
+        console.log(flatListIndex.value);
         if (flatListIndex.value < dataLength - 1) {
           flatListRef.current?.scrollToIndex({ index: flatListIndex.value + 1 });
         } else {
@@ -291,7 +292,7 @@ const Onboarder = () => {
   });
 
   const onViewableItemsChanged = ({ viewableItems }: { viewableItems: ViewToken[] }) => {
-    if (viewableItems?.[0]?.index && viewableItems[0].index !== null) {
+    if (viewableItems?.[0] && viewableItems[0].index !== null) {
       flatListIndex.value = viewableItems[0].index;
     }
   };
