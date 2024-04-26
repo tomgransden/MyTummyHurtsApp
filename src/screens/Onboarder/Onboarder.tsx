@@ -38,7 +38,7 @@ const data: OnboarderData[] = [
     id: 1,
     image:
       'https://static.vecteezy.com/system/resources/previews/033/859/580/original/hungry-character-clipart-png.png',
-    text: 'Measure your pain',
+    text: 'Rate your pain',
     textColor: 'white',
     backgroundColor: '#bfa2c8',
   },
@@ -46,7 +46,7 @@ const data: OnboarderData[] = [
     id: 2,
     image:
       'https://www.vashtiperformance.com.au/images/4da56adf960aaa3c93108caf95d5e67f4f434ffeb84af38f3c1840050e0df1b390e715bb91ec20658aa7bd37f437b0e299b78b210027c38f3e0503_1280.png?_cchid=632cc022f5f1ce08ae225dc0b244a1d2',
-    text: 'Log your moods',
+    text: 'Log your mood',
     textColor: 'white',
     backgroundColor: 'mediumpurple',
   },
@@ -291,7 +291,7 @@ const Onboarder = () => {
   });
 
   const onViewableItemsChanged = ({ viewableItems }: { viewableItems: ViewToken[] }) => {
-    if (viewableItems?.[0].index !== null) {
+    if (viewableItems?.[0]?.index && viewableItems[0].index !== null) {
       flatListIndex.value = viewableItems[0].index;
     }
   };
