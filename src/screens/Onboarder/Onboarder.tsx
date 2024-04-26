@@ -1,4 +1,5 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -200,6 +201,8 @@ const CustomButton = ({
 }) => {
   const { width: SCREEN_WIDTH } = useWindowDimensions();
 
+  const navigation = useNavigation();
+
   const animatedColor = useAnimatedStyle(() => {
     const color = interpolateColor(
       x.value,
@@ -240,7 +243,7 @@ const CustomButton = ({
         if (flatListIndex.value < dataLength - 1) {
           flatListRef.current?.scrollToIndex({ index: flatListIndex.value + 1 });
         } else {
-          //navigate to next screen
+          navigation.navigate('SignedOut');
         }
       }}>
       <Animated.View
