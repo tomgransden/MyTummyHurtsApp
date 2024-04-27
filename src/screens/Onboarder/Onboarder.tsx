@@ -24,6 +24,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { styles } from './Onboarder.style';
+import { useFirstTimeAsyncStorage } from '../../hooks/use-first-time-async-storage';
 
 type OnboarderData = {
   id: number;
@@ -54,7 +55,7 @@ const data: OnboarderData[] = [
     id: 3,
     image:
       'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c7663473-537a-41ba-9555-f5c404622711/d8csv5h-77837356-6a2f-484b-a97c-6276f900ea02.png/v1/fill/w_1024,h_1024/burrito_by_countessmrose_d8csv5h-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcL2M3NjYzNDczLTUzN2EtNDFiYS05NTU1LWY1YzQwNDYyMjcxMVwvZDhjc3Y1aC03NzgzNzM1Ni02YTJmLTQ4NGItYTk3Yy02Mjc2ZjkwMGVhMDIucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ZDfCfPw6OeRdg8gRtP4t7D3CDcaieVGNCHxXMhdZB88',
-    text: 'Track your meals',
+    text: 'Track your food',
     textColor: 'white',
     backgroundColor: '#bfa2c8',
   },
@@ -237,13 +238,14 @@ const CustomButton = ({
     };
   });
 
+  const { setItem } = useFirstTimeAsyncStorage();
   return (
     <TouchableWithoutFeedback
-      onPress={() => {
-        console.log(flatListIndex.value);
+      onPress={async () => {
         if (flatListIndex.value < dataLength - 1) {
           flatListRef.current?.scrollToIndex({ index: flatListIndex.value + 1 });
         } else {
+          await setItem('true');
           navigation.navigate('SignedOut');
         }
       }}>
@@ -292,7 +294,7 @@ const Onboarder = () => {
   });
 
   const onViewableItemsChanged = ({ viewableItems }: { viewableItems: ViewToken[] }) => {
-    if (viewableItems?.[0] && viewableItems[0].index !== null) {
+    if (viewableItems?.[0]?.index && viewableItems[0].index !== null) {
       flatListIndex.value = viewableItems[0].index;
     }
   };

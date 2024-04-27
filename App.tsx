@@ -9,6 +9,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useRef, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import { useFirstTimeAsyncStorage } from './src/hooks/use-first-time-async-storage';
 import BowelMovements from './src/screens/BowelMovements/BowelMovements';
 import CreateAccount from './src/screens/CreateAccount/CreateAccount';
 import Food from './src/screens/Food/Food';
@@ -50,9 +51,10 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 SplashScreen.preventAutoHideAsync();
 
 function App() {
-  // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
+
+  const [onboarderStatus, setOnboarderStatus] = useState<string | null | undefined>();
 
   const routeNameRef = useRef<string>();
   const navigationRef = useNavigationContainerRef();
@@ -77,7 +79,17 @@ function App() {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  if (!fontsLoaded) {
+  const { getItem } = useFirstTimeAsyncStorage();
+
+  useEffect(() => {
+    const getStatus = async () => await getItem();
+
+    getStatus().then((item) => {
+      setOnboarderStatus(item);
+    });
+  }, []);
+
+  if (!fontsLoaded || initializing || onboarderStatus === undefined) {
     return null;
   }
 
@@ -126,11 +138,13 @@ function App() {
             </Stack.Group>
           ) : (
             <Stack.Group>
-              <Stack.Screen
-                name="Onboarder"
-                component={Onboarder}
-                options={{ headerShown: false }}
-              />
+              {onboarderStatus === null ? (
+                <Stack.Screen
+                  name="Onboarder"
+                  component={Onboarder}
+                  options={{ headerShown: false }}
+                />
+              ) : null}
               <Stack.Screen
                 name="SignedOut"
                 component={SignedOut}
