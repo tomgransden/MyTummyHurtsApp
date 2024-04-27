@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
-import { RootStackParamList } from '../../../App';
+import { RootStackParamList } from '../../navigation/MyTummyHurtsNavigation.type';
 
 const ImageZoomer = ({ route }: { route: RouteProp<RootStackParamList, 'ImageZoomer'> }) => {
   const scale = useSharedValue(1);

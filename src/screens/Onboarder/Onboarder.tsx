@@ -236,14 +236,14 @@ const CustomButton = ({
     };
   });
 
-  const { setItem } = useFirstTimeAsyncStorage();
+  const { setShownOnboarder } = useFirstTimeAsyncStorage();
   return (
     <TouchableWithoutFeedback
       onPress={async () => {
         if (flatListIndex.value < dataLength - 1) {
           flatListRef.current?.scrollToIndex({ index: flatListIndex.value + 1 });
         } else {
-          await setItem('true');
+          await setShownOnboarder();
           navigation.navigate('SignedOut');
         }
       }}>
