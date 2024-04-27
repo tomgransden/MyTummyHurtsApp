@@ -33,7 +33,6 @@ const MedicationScreen = ({ navigation }: IMedicationScreenProps) => {
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
     //if (index === 0) inputRef.current?.focus();
   }, []);
 
@@ -54,7 +53,6 @@ const MedicationScreen = ({ navigation }: IMedicationScreenProps) => {
     const item = await getItem();
     let parsedItem: string[] = [];
     if (typeof item === 'string') parsedItem = JSON.parse(item);
-    console.log(parsedItem);
     addMedication(parsedItem);
   };
 

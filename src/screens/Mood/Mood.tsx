@@ -72,7 +72,7 @@ const Mood = () => {
         ))}
       </View>
 
-      {selectedMood ? <Button loading={loading} onPress={submitMood} title="Submit mood" /> : null}
+      {selectedMood ? <Button loading={loading} onPress={submitMood} label="Submit mood" /> : null}
     </View>
   );
 };

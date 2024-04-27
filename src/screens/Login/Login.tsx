@@ -33,7 +33,7 @@ const Login = () => {
         secureTextEntry
         placeholder="Password"
       />
-      <Button loading={loading} title="Sign in" onPress={handleSignIn} />
+      <Button loading={loading} label="Sign in" onPress={handleSignIn} />
     </View>
   );
 };

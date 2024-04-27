@@ -1,4 +1,5 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useFirstTimeAsyncStorage } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
 import {
   View,
@@ -25,7 +26,6 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { styles } from './Onboarder.style';
-import { useFirstTimeAsyncStorage } from '../../hooks/use-first-time-async-storage';
 
 type OnboarderData = {
   id: number;
@@ -236,14 +236,14 @@ const CustomButton = ({
     };
   });
 
-  const { setItem } = useFirstTimeAsyncStorage();
+  const { setShownOnboarder } = useFirstTimeAsyncStorage();
   return (
     <TouchableWithoutFeedback
       onPress={async () => {
         if (flatListIndex.value < dataLength - 1) {
           flatListRef.current?.scrollToIndex({ index: flatListIndex.value + 1 });
         } else {
-          await setItem('true');
+          await setShownOnboarder();
           navigation.navigate('SignedOut');
         }
       }}>

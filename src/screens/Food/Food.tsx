@@ -91,7 +91,7 @@ const Food = () => {
           {!foodPhoto ? 'No image selected (tap to choose)' : '1 photo selected (tap to change)'}
         </Text>
       </TouchableOpacity>
-      <Button loading={loading} onPress={submitFood} title="Submit" />
+      <Button loading={loading} onPress={submitFood} label="Submit" />
     </View>
   );
 };
