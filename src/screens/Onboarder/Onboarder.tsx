@@ -8,6 +8,7 @@ import {
   FlatList,
   ViewToken,
   TouchableWithoutFeedback,
+  ImageSourcePropType,
 } from 'react-native';
 import Animated, {
   AnimatedRef,
@@ -29,7 +30,7 @@ import { useFirstTimeAsyncStorage } from '../../hooks/use-first-time-async-stora
 type OnboarderData = {
   id: number;
   text: string;
-  image: string;
+  image: ImageSourcePropType;
   textColor: string;
   backgroundColor: string;
 };
@@ -37,24 +38,21 @@ type OnboarderData = {
 const data: OnboarderData[] = [
   {
     id: 1,
-    image:
-      'https://static.vecteezy.com/system/resources/previews/033/859/580/original/hungry-character-clipart-png.png',
+    image: require('../../../assets/pain.png'),
     text: 'Rate your pain',
     textColor: 'white',
     backgroundColor: '#bfa2c8',
   },
   {
     id: 2,
-    image:
-      'https://www.vashtiperformance.com.au/images/4da56adf960aaa3c93108caf95d5e67f4f434ffeb84af38f3c1840050e0df1b390e715bb91ec20658aa7bd37f437b0e299b78b210027c38f3e0503_1280.png?_cchid=632cc022f5f1ce08ae225dc0b244a1d2',
+    image: require('../../../assets/mood.png'),
     text: 'Log your mood',
     textColor: 'white',
     backgroundColor: 'mediumpurple',
   },
   {
     id: 3,
-    image:
-      'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c7663473-537a-41ba-9555-f5c404622711/d8csv5h-77837356-6a2f-484b-a97c-6276f900ea02.png/v1/fill/w_1024,h_1024/burrito_by_countessmrose_d8csv5h-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcL2M3NjYzNDczLTUzN2EtNDFiYS05NTU1LWY1YzQwNDYyMjcxMVwvZDhjc3Y1aC03NzgzNzM1Ni02YTJmLTQ4NGItYTk3Yy02Mjc2ZjkwMGVhMDIucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ZDfCfPw6OeRdg8gRtP4t7D3CDcaieVGNCHxXMhdZB88',
+    image: require('../../../assets/food.png'),
     text: 'Track your food',
     textColor: 'white',
     backgroundColor: '#bfa2c8',
@@ -112,8 +110,8 @@ const RenderItem = ({
       </View>
       <Animated.View style={imageStyle}>
         <Image
-          source={{ uri: item.image }}
-          style={{ width: SCREEN_WIDTH * 0.8, height: SCREEN_WIDTH * 0.8 }}
+          source={item.image}
+          style={{ width: SCREEN_WIDTH * 0.9, height: SCREEN_WIDTH * 0.9 }}
         />
       </Animated.View>
       <Text
