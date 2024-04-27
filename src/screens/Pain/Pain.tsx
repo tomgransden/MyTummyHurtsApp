@@ -74,7 +74,7 @@ const Pain = () => {
         multiline
         style={styles.input}
       />
-      <Button loading={loading} title="Submit pain score" onPress={submitPainScore} />
+      <Button loading={loading} label="Submit pain score" onPress={submitPainScore} />
     </View>
   );
 };

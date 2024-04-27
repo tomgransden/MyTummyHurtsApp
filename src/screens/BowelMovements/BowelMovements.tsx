@@ -144,7 +144,7 @@ const BowelMovements = () => {
         </View>
       </View>
 
-      <Button loading={loading} title="Submit" onPress={submitBowelMovement} />
+      <Button loading={loading} label="Submit" onPress={submitBowelMovement} />
 
       {show ? (
         <DateTimePicker

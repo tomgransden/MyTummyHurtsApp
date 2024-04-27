@@ -34,7 +34,7 @@ const CreateAccount = () => {
         textContentType="password"
         secureTextEntry
       />
-      <Button loading={loading} onPress={createAccount} title="Create account" />
+      <Button loading={loading} onPress={createAccount} label="Create account" />
     </View>
   );
 };

@@ -40,20 +40,20 @@ const MenuScreen = ({ navigation }: IMenuScreenProps) => {
       </View>
       <View>
         <Button
-          title={'Summary'}
+          label={'Summary'}
           onPress={() => {
             navigation.navigate('Summary');
           }}
         />
-        <Button title={'My profile'} onPress={() => {}} />
+        <Button label={'My profile'} onPress={() => {}} />
         <Button
-          title={'Settings'}
+          label={'Settings'}
           onPress={() => {
             navigation.navigate('Settings');
           }}
         />
         <Button
-          title={'Logout'}
+          label={'Logout'}
           onPress={() => {
             auth().signOut();
           }}
