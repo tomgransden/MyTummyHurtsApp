@@ -11,7 +11,7 @@
     "lint-and-fix": "eslint . --ext .ts,.tsx,.js,.jsx,.json --fix",
     "prettier-format": "prettier --config .prettierrc '**/*.{json,js,jsx,ts,tsx,css,scss,md}' --write",
     "prepare": "husky install",
-    "test":"yarn jest",
+    "test": "yarn jest",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -69,6 +69,8 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFilesAfterEnv": ["./jestGlobalSetup.ts"]
+    "setupFilesAfterEnv": [
+      "./jestGlobalSetup.ts"
+    ]
   }
 }
