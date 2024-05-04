@@ -9,7 +9,7 @@ export enum IRecordType {
 }
 
 type IDataPointBase = {
-  createdDate: Date;
+  createdDate: string;
 };
 
 export type IMedicationDataPoint = IDataPointBase & {

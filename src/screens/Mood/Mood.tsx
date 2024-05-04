@@ -1,12 +1,10 @@
 import { Button } from '@components';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 import { styles } from './Mood.style';
+import { useAddItem } from '../../hooks/use-add-item';
 import { IRecordType } from '../Summary/Summary.types';
 
 type IMood = {
@@ -24,37 +22,20 @@ const moodIcons: IMood[] = [
 
 const Mood = () => {
   const [selectedMood, setSelectedMood] = useState<IMood | undefined>();
-  const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
+
+  const { addEntryToDatabase, loading } = useAddItem();
 
   const submitMood = async () => {
-    setLoading(true);
-    const { uid } = auth().currentUser ?? {};
-
-    const document = firestore().collection('users').doc(uid);
-
-    const record = await document.get();
-
-    await document.set(
-      {
-        moods: [
-          ...(record.get<keyof { moods: [] }>('moods') ?? []),
-          {
-            createdDate: new Date().toISOString(),
-            metadata: {
-              mood: selectedMood?.mood,
-              moodIcon: selectedMood?.moodIcon,
-            },
-            type: IRecordType.Mood,
-          },
-        ],
-      },
-      { merge: true }
-    );
-
-    setLoading(false);
-
-    navigation.navigate('MainMenu');
+    if (selectedMood) {
+      await addEntryToDatabase({
+        createdDate: new Date().toISOString(),
+        metadata: {
+          mood: selectedMood?.mood,
+          moodIcon: selectedMood?.moodIcon,
+        },
+        type: IRecordType.Mood,
+      });
+    }
   };
 
   return (
@@ -62,13 +43,14 @@ const Mood = () => {
       <Text style={styles.heading}>How are you feeling right now?</Text>
       <View style={styles.moodsContainer}>
         {moodIcons.map((item) => (
-          <MaterialCommunityIcons
-            key={item.mood}
-            size={60}
-            name={item.moodIcon}
-            color={selectedMood === item ? 'black' : 'grey'}
-            onPress={() => setSelectedMood(item)}
-          />
+          <TouchableOpacity key={item.mood} onPress={() => setSelectedMood(item)}>
+            <MaterialCommunityIcons
+              key={item.mood}
+              size={60}
+              name={item.moodIcon}
+              color={selectedMood === item ? 'black' : 'grey'}
+            />
+          </TouchableOpacity>
         ))}
       </View>
 

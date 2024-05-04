@@ -1,51 +1,27 @@
 import { Button } from '@components';
 import Slider from '@react-native-community/slider';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
 
 import { styles } from './Pain.style';
+import { useAddItem } from '../../hooks/use-add-item';
 import { IRecordType } from '../Summary/Summary.types';
 
 const Pain = () => {
   const [painScore, setPainScore] = useState(1);
-  const [loading, setLoading] = useState(false);
   const [painDescription, setPainDescription] = useState<string>('');
-  const navigation = useNavigation();
 
-  const submitPainScore = async () => {
-    setLoading(true);
-    const { uid } = auth().currentUser ?? {};
+  const { addEntryToDatabase, loading } = useAddItem();
 
-    const user = firestore().collection('users').doc(uid);
-
-    const record = await user.get();
-
-    const existingPains = record.get<'pains'>('pains');
-
-    await user.set(
-      {
-        pains: [
-          ...(existingPains ?? []),
-          {
-            type: IRecordType.Pain,
-            createdDate: new Date().toISOString(),
-            metadata: {
-              painScore,
-              painDescription,
-            },
-          },
-        ],
+  const submitPainScore = async () =>
+    await addEntryToDatabase({
+      type: IRecordType.Pain,
+      createdDate: new Date().toISOString(),
+      metadata: {
+        painScore,
+        painDescription,
       },
-      { merge: true }
-    );
-
-    setLoading(false);
-
-    navigation.navigate('MainMenu');
-  };
+    });
 
   return (
     <View>

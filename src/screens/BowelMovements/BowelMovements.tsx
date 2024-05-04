@@ -1,14 +1,12 @@
 import { Button } from '@components';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import Slider from '@react-native-community/slider';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { View, Text, Image, Platform } from 'react-native';
 
 import { styles } from './BowelMovements.style';
+import { useAddItem } from '../../hooks/use-add-item';
 import { IRecordType } from '../Summary/Summary.types';
 
 const bristol = require('../../../assets/bristol.png');
@@ -64,10 +62,9 @@ const BowelMovements = () => {
   const [dateTime, setDateTime] = useState<Date>(new Date());
   const [userSelectedDate, setUserSelectedDate] = useState(false);
   const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [bristolScore, setBristolScore] = useState(1);
 
-  const navigation = useNavigation();
+  const { addEntryToDatabase, loading } = useAddItem();
 
   const chooseTime = () => {
     setShow(true);
@@ -82,35 +79,14 @@ const BowelMovements = () => {
     }
   };
 
-  const submitBowelMovement = async () => {
-    setLoading(true);
-
-    const { uid } = auth().currentUser ?? {};
-
-    const user = firestore().collection('users').doc(uid);
-
-    const record = await user.get();
-
-    await user.set(
-      {
-        bowel: [
-          ...(record.get<'bowel'>('bowel') ?? []),
-          {
-            type: IRecordType.Bowel,
-            createdDate: dateTime.toISOString(),
-            metadata: {
-              bristolScore,
-            },
-          },
-        ],
+  const submitBowelMovement = async () =>
+    await addEntryToDatabase({
+      type: IRecordType.Bowel,
+      createdDate: dateTime.toISOString(),
+      metadata: {
+        bristolScore,
       },
-      { merge: true }
-    );
-
-    setLoading(false);
-
-    navigation.navigate('MainMenu');
-  };
+    });
 
   return (
     <>

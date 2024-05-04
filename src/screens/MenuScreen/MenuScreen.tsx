@@ -45,7 +45,6 @@ const MenuScreen = ({ navigation }: IMenuScreenProps) => {
             navigation.navigate('Summary');
           }}
         />
-        <Button label={'My profile'} onPress={() => {}} />
         <Button
           label={'Settings'}
           onPress={() => {
