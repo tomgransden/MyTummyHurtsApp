@@ -292,7 +292,7 @@ const Onboarder = () => {
   });
 
   const onViewableItemsChanged = ({ viewableItems }: { viewableItems: ViewToken[] }) => {
-    if (viewableItems?.[0]?.index && viewableItems[0].index !== null) {
+    if (viewableItems?.[0] && viewableItems[0].index !== null) {
       flatListIndex.value = viewableItems[0].index;
     }
   };

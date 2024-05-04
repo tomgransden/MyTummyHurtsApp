@@ -22,14 +22,14 @@ export default {
     ],
     name: 'My Tummy Hurts',
     slug: 'my-tummy-hurts',
-    version: '0.0.32',
+    version: '0.0.34',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
     splash: {
       image: './assets/splash.png',
       resizeMode: 'contain',
-      backgroundColor: '#ffffff',
+      backgroundColor: '#9370db',
     },
     updates: {
       fallbackToCacheTimeout: 0,
@@ -40,7 +40,7 @@ export default {
       supportsTablet: false,
       bundleIdentifier: 'com.tgransdenapps.mytummyhurts',
       googleServicesFile: process.env.IOS_GOOGLE_SERVICES_PLIST ?? './GoogleService-Info.plist',
-      buildNumber: '32',
+      buildNumber: '34',
       icon: './assets/ios-icon.png',
     },
     android: {
@@ -50,7 +50,7 @@ export default {
         monochromeImage: './assets/ic_launcher_monochrome.png',
       },
       package: 'com.tgransdenapps.mytummyhurts',
-      versionCode: 32,
+      versionCode: 34,
       googleServicesFile: process.env.ANDROID_GOOGLE_SERVICES_JSON,
     },
     web: {
