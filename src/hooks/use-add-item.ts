@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 import { IDataPoint, IRecordType } from '../screens/Summary/Summary.types';
 
-
 const getDatabaseKey = (recordType: IRecordType) => {
   switch (recordType) {
     case IRecordType.Bowel:
