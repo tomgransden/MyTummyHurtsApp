@@ -5,7 +5,7 @@ import { styles } from './TextInput.style';
 const TextInput = ({ style, placeholder, ...rest }: TextInputProps) => {
   return (
     <>
-      <Text style={{ fontWeight: 'bold' }}>{placeholder}</Text>
+      <Text style={{ fontFamily: 'RubikBold' }}>{placeholder}</Text>
       <TextInputBase
         placeholder={placeholder}
         placeholderTextColor="white"
