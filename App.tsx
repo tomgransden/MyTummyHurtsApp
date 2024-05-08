@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import MyTummyHurtsNavigation from './src/navigation/MyTummyHurtsNavigation';
@@ -13,11 +13,7 @@ function App() {
     Rubik: require('./assets/Rubik-VariableFont_wght.ttf'),
   });
 
-  useEffect(() => {
-    if (fontsLoaded) SplashScreen.hideAsync();
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded /*initializing || onboarderStatus === undefined */) {
+  if (!fontsLoaded) {
     return null;
   }
 

@@ -16,7 +16,6 @@ const MedicationScreen = ({ navigation }: IMedicationScreenProps) => {
   const [medication, addMedication] = useState<string[]>([]);
   const { getItem, setItem } = useAsyncStorage('@mth_medications');
 
-  // variables
   const snapPoints = useMemo(() => ['25%'], []);
 
   const renderBackdrop = useCallback(

@@ -3,6 +3,7 @@ import { useAuth, useFirstTimeAsyncStorage } from '@hooks';
 import analytics from '@react-native-firebase/analytics';
 import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useRef } from 'react';
 
@@ -47,6 +48,7 @@ const MyTummyHurtsNavigation = () => {
       ref={navigationRef}
       onReady={async () => {
         routeNameRef.current = navigationRef.current?.getCurrentRoute()?.name;
+        await SplashScreen.hideAsync();
       }}
       onStateChange={async () => {
         const previousRouteName = routeNameRef.current;
