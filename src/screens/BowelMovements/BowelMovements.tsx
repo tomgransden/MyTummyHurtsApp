@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { View, Text, Image, Platform } from 'react-native';
 
 import { styles } from './BowelMovements.style';
+import { useDateTimePicker } from './hooks/use-date-time-picker';
 import { useAddItem } from '../../hooks/use-add-item';
 import { IRecordType } from '../Summary/Summary.types';
 
@@ -59,25 +60,11 @@ const AndroidHeader = ({
 };
 
 const BowelMovements = () => {
-  const [dateTime, setDateTime] = useState<Date>(new Date());
-  const [userSelectedDate, setUserSelectedDate] = useState(false);
-  const [show, setShow] = useState(false);
   const [bristolScore, setBristolScore] = useState(1);
 
   const { addEntryToDatabase, loading } = useAddItem();
 
-  const chooseTime = () => {
-    setShow(true);
-  };
-
-  const selectTime = (event: DateTimePickerEvent, date: Date) => {
-    setShow(false);
-
-    if (date && event.type === 'set') {
-      setUserSelectedDate(true);
-      setDateTime(date);
-    }
-  };
+  const { chooseTime, dateTime, selectTime, showPicker, userSelectedDate } = useDateTimePicker();
 
   const submitBowelMovement = async () =>
     await addEntryToDatabase({
@@ -122,7 +109,7 @@ const BowelMovements = () => {
 
       <Button loading={loading} label="Submit" onPress={submitBowelMovement} />
 
-      {show ? (
+      {showPicker ? (
         <DateTimePicker
           style={{ marginLeft: -12 }}
           display="clock"
