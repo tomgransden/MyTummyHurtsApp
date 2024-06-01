@@ -1,3 +1,4 @@
+import { usePushNotifications } from '@hooks';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect } from 'react';
@@ -13,11 +14,13 @@ function App() {
     Rubik: require('./assets/Rubik-VariableFont_wght.ttf'),
   });
 
+  usePushNotifications();
+
   useEffect(() => {
     if (fontsLoaded) SplashScreen.hideAsync();
   }, [fontsLoaded]);
 
-  if (!fontsLoaded /*initializing || onboarderStatus === undefined */) {
+  if (!fontsLoaded) {
     return null;
   }
 
