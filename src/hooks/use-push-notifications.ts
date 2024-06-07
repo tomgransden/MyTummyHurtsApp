@@ -41,8 +41,7 @@ async function registerForPushNotificationsAsync() {
     handleRegistrationError('Project ID not found');
   }
   try {
-    const pushTokenString = (await Notifications.getDevicePushTokenAsync()).data;
-    return pushTokenString;
+    return (await Notifications.getDevicePushTokenAsync()).data;
   } catch (e: unknown) {
     handleRegistrationError(`${e}`);
   }

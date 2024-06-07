@@ -34,20 +34,26 @@ const Food = () => {
   const submitFood = async () => {
     setUploadingPhoto(true);
 
-    const reference = storage().ref(`${randomUUID()}.jpg`);
+    let url: string | undefined;
 
-    await reference.putFile(foodPhoto!).catch((err) => console.log(err));
+    if (foodPhoto) {
+      const reference = storage().ref(`${randomUUID()}.jpg`);
 
-    const url = await reference.getDownloadURL();
+      await reference.putFile(foodPhoto).catch((err) => console.log(err));
+
+      url = await reference.getDownloadURL();
+    }
 
     await addEntryToDatabase({
       type: IRecordType.Food,
       createdDate: new Date().toISOString(),
       metadata: {
         description: foodDescription,
-        image: url,
+        image: url ?? '',
       },
     });
+
+    setUploadingPhoto(false);
   };
   return (
     <View style={{ paddingTop: 16, paddingHorizontal: 16 }}>

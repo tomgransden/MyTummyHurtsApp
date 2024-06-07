@@ -3,6 +3,7 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 
+import { useToast } from './use-toast';
 import { IDataPoint, IRecordType } from '../screens/Summary/Summary.types';
 
 const getDatabaseKey = (recordType: IRecordType) => {
@@ -25,27 +26,34 @@ export const useAddItem = () => {
 
   const navigation = useNavigation();
 
+  const { showErrorToast } = useToast();
+
   const addEntryToDatabase = async (dataPoint: IDataPoint) => {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    const { uid } = auth().currentUser ?? {};
+      const { uid } = auth().currentUser ?? {};
 
-    const user = firestore().collection('users').doc(uid);
+      const user = firestore().collection('users').doc(uid);
 
-    const record = await user.get();
+      const record = await user.get();
 
-    const databaseKey = getDatabaseKey(dataPoint.type);
+      const databaseKey = getDatabaseKey(dataPoint.type);
 
-    await user.set(
-      {
-        [databaseKey]: [...(record.get<typeof databaseKey>(databaseKey) ?? []), dataPoint],
-      },
-      { merge: true }
-    );
+      await user.set(
+        {
+          [databaseKey]: [...(record.get<typeof databaseKey>(databaseKey) ?? []), dataPoint],
+        },
+        { merge: true }
+      );
 
-    setLoading(false);
+      setLoading(false);
 
-    navigation.navigate('MainMenu');
+      navigation.navigate('MainMenu');
+    } catch {
+      showErrorToast(`Please try again later.`);
+      setLoading(false);
+    }
   };
   return { loading, addEntryToDatabase };
 };

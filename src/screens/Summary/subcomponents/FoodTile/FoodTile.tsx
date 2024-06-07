@@ -1,3 +1,4 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
@@ -25,9 +26,13 @@ const FoodTile = ({ item }: IFoodTileProps) => {
         </View>
       </View>
       <View style={styles.contentContainer}>
-        <TouchableOpacity onPress={openZoomer}>
-          <Image source={{ uri: item?.metadata?.image }} style={styles.image} />
-        </TouchableOpacity>
+        {item.metadata.image ? (
+          <TouchableOpacity onPress={openZoomer}>
+            <Image source={{ uri: item?.metadata?.image }} style={styles.image} />
+          </TouchableOpacity>
+        ) : (
+          <MaterialCommunityIcons color="mediumpurple" size={60} name="food-apple" />
+        )}
         <Text style={styles.description}>{item.metadata.description}</Text>
       </View>
     </View>
