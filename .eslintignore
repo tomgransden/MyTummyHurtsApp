@@ -10,3 +10,5 @@ android
 google-services.json
 
 coverage
+
+firebase.json
